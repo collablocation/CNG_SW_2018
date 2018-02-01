@@ -291,9 +291,8 @@ server <- function(input, output, session){
       # Add base maps
       addTiles(group = "OpenStreetMap") %>%
       addProviderTiles("CartoDB.Positron", group = "Black & White") %>%
-      addTiles(urlTemplate = 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
-               attribution = paste('&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors','&copy; <a href="http://cartodb.com/attributions">CartoDB</a>'),group="Labels Only") %>%
       addProviderTiles("CartoDB.DarkMatter", group = "Awesome Dark") %>%
+      addProviderTiles("Esri.WorldImagery", group = "Satellite View") %>%
       addGeoJSON(I10,color="cyan",weight=3,opacity=1,fill=FALSE,group="I-10 (CA-TX)",options = pathOptions(clickable=FALSE)) %>%
       addGeoJSON(ALLNHS_1,color="#FEF9E7",weight=1,opacity=0.3,fill=FALSE,group="Annual Average Daily Traffic for Trucks",options = pathOptions(clickable=FALSE)) %>%
       addGeoJSON(ALLNHS_2,color="#FCF3CF",weight=2,opacity=0.5,fill=FALSE,group="Annual Average Daily Traffic for Trucks",options = pathOptions(clickable=FALSE)) %>%
@@ -304,7 +303,7 @@ server <- function(input, output, session){
       hideGroup("I-10 (CA-TX)") %>%
       
       # adding a layer control to swith between different reference maps
-      addLayersControl(baseGroups = c("OpenStreetMap","Black & White","Labels Only","Awesome Dark"),
+      addLayersControl(baseGroups = c("OpenStreetMap","Black & White","Awesome Dark","Satellite View"),
                        overlayGroups = c("I-10 (CA-TX)","Annual Average Daily Traffic for Trucks"),
                        options = layersControlOptions(collapsed = TRUE,autoZIndex=TRUE)) %>%
       # adding a scalebar
@@ -927,8 +926,8 @@ server <- function(input, output, session){
             
             # add driving range result to the table
             data_measure <- data_measure %>% mutate(paste0("Driving range: ",input$driving_range,"   ",path_covered," out of 323"),
-                                                    paste0(ktons_covered," (",ktons_covered_pt,")"),
-                                                    paste0(tkm_covered," (",tkm_covered_pt,")"))
+                                                    paste0(round(ktons_covered,digits=0)," (",ktons_covered_pt,")"),
+                                                    paste0(round(tkm_covered,digits=0)," (",tkm_covered_pt,")"))
             colnames(data_measure)[7:9] <- c("PATH_COVERED","KTONS_COVERED","TMILES_COVERED")
             
             # add driving range result to the plot
@@ -1169,12 +1168,23 @@ The combination of group name and stage is the same as a previous one. Selection
   })
   
   observe({
-    od_pair <- OD_paths %>% filter(PAIR == input$od_pairs)
-    leafletProxy("map") %>% 
-      clearGroup("OD Path") 
-    
-    leafletProxy("map") %>% 
-      addPolylines(data=od_pair,color="cyan",weight=2,opacity=1,fill=FALSE,group="OD Path",options = pathOptions(clickable=FALSE))
+    od_pair <- OD_paths2 %>% filter(PAIR == input$od_pairs)
+    wt<-od_pair$WIDTH*2
+    ktons<-round(od_pair$TOTAL_KTONS_2015.y,digits=0)
+    tmiles<-round(od_pair$TOTAL_TON_MILE_2015.y,digits=0)
+    if(nrow(od_pair) > 0) {
+      leafletProxy("map") %>% 
+        clearGroup("OD Path") %>%
+        removeControl(layerId="OD_Legend")
+
+      leafletProxy("map") %>% 
+        addPolylines(data=od_pair,color="cyan",weight=wt,opacity=1,fill=FALSE,group="OD Path",options = pathOptions(clickable=FALSE)) %>%
+        addLegend("bottomleft",colors="cyan",labels=paste0("KTons: ",ktons,"; ","Ton-Miles: ",tmiles),opacity=3,title=od_pair$PAIR,layerId="OD_Legend")
+    } else {
+      leafletProxy("map") %>% 
+        clearGroup("OD Path") %>%
+        removeControl(layerId="OD_Legend")
+    }
   })
   
   downloadTempGroupSelections <- reactive({
@@ -1648,14 +1658,13 @@ The combination of group name and stage is the same as a previous one. Selection
       # Add base maps
       addTiles(group = "OpenStreetMap") %>%
       addProviderTiles("CartoDB.Positron", group = "Black & White") %>%
-      addTiles(urlTemplate = 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
-               attribution = paste('&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors','&copy; <a href="http://cartodb.com/attributions">CartoDB</a>'),group="Labels Only") %>%
       addProviderTiles("CartoDB.DarkMatter", group = "Awesome Dark") %>%
+      addProviderTiles("Esri.WorldImagery", group = "Satellite View") %>%
       # adding a layer control to swith between different reference maps
       addGeoJSON(I10,color="cyan",weight=3,opacity=1,fill=FALSE,group="I-10 (CA-TX)",pathOptions(clickable=FALSE)) %>%
       hideGroup("I-10 (CA-TX)") %>%
       # adding a layer control to swith between different reference maps
-      addLayersControl(baseGroups = c("OpenStreetMap","Black & White","Labels Only","Awesome Dark"),
+      addLayersControl(baseGroups = c("OpenStreetMap","Black & White","Awesome Dark","Satellite View"),
                        overlayGroups = c("I-10 (CA-TX)"),
                        options = layersControlOptions(collapsed = TRUE,autoZIndex=TRUE)) %>%
       # adding a scalebar
