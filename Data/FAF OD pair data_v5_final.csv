@@ -1,0 +1,324 @@
+"","OD","ORIGIN","DESTINATION","OD_PATH","DMS_ORIG","DMS_DEST","DMS_MODE","TOTAL_KTONS_2015","TOTAL_TON_MILE_2015"
+"1","Albuquerque-Austin","Albuquerque","Austin",1,"Albuquerque NM","Austin TX","Truck",84.7911,72.6194
+"2","Albuquerque-Beaumont","Albuquerque","Beaumont",3,"Albuquerque NM","Beaumont TX","Truck",55.5804,57.3659
+"3","Albuquerque-Corpus Christi","Albuquerque","Corpus Christi",4,"Albuquerque NM","Corpus Christi TX","Truck",89.7821,98.4492
+"4","Albuquerque-Dallas-Fort Worth","Albuquerque","Dallas-Fort Worth",5,"Albuquerque NM","Dallas-Fort Worth TX","Truck",960.0405,751.9763
+"5","Albuquerque-Laredo","Albuquerque","Laredo",8,"Albuquerque NM","Laredo TX","Truck",93.0493,88.3406
+"6","Albuquerque-Oklahoma City","Albuquerque","Oklahoma City",10,"Albuquerque NM","Oklahoma City OK","Truck",100.9293,76.1548
+"7","Albuquerque-Port of Houston","Albuquerque","Port of Houston",11,"Albuquerque NM","Port of Houston TX","Truck",582.1912,557.2302
+"8","Albuquerque-San Antonio","Albuquerque","San Antonio",13,"Albuquerque NM","San Antonio TX","Truck",172.3708,145.567
+"9","Albuquerque-Tulsa","Albuquerque","Tulsa",14,"Albuquerque NM","Tulsa OK","Truck",42.5008,33.3589
+"10","Austin-Beaumont","Austin","Beaumont",17,"Austin TX","Beaumont TX","Truck",39.9752,11.4067
+"11","Austin-Dallas-Fort Worth","Austin","Dallas-Fort Worth",18,"Austin TX","Dallas-Fort Worth TX","Truck",2412.2368,545.8788
+"12","Austin-Port of Houston","Austin","Port of Houston",22,"Austin TX","Port of Houston TX","Truck",2633.6288,520.2679
+"13","Baton Rouge-Oklahoma City","Baton Rouge","Oklahoma City",27,"Baton Rouge LA","Oklahoma City OK","Truck",59.5242,38.8254
+"14","Baton Rouge-Port of New Orleans","Baton Rouge","Port of New Orleans",28,"Baton Rouge LA","Port of New Orleans LA","Truck",15251.306,1291.5639
+"15","Baton Rouge-Tulsa","Baton Rouge","Tulsa",29,"Baton Rouge LA","Tulsa OK","Truck",158.817,95.472
+"16","Corpus Christi-Dallas-Fort Worth","Corpus Christi","Dallas-Fort Worth",41,"Corpus Christi TX","Dallas-Fort Worth TX","Truck",5181.9443,2288.691
+"17","Corpus Christi-Port of Houston","Corpus Christi","Port of Houston",45,"Corpus Christi TX","Port of Houston TX","Truck",1399.0778,376.9717
+"18","Corpus Christi-San Antonio","Corpus Christi","San Antonio",47,"Corpus Christi TX","San Antonio TX","Truck",3114.3506,503.1629
+"19","Dallas-Fort Worth-Port of Houston","Dallas-Fort Worth","Port of Houston",55,"Dallas-Fort Worth TX","Port of Houston TX","Truck",15244.8251,4429.5333
+"20","Denver-Austin","Denver","Austin",59,"Denver CO","Austin TX","Truck",42.1905,42.6296
+"21","Denver-Baton Rouge","Denver","Baton Rouge",60,"Denver CO","Baton Rouge LA","Truck",76.088,97.0552
+"22","Denver-Beaumont","Denver","Beaumont",61,"Denver CO","Beaumont TX","Truck",144.6937,169.9409
+"23","Denver-Corpus Christi","Denver","Corpus Christi",62,"Denver CO","Corpus Christi TX","Truck",12.0786,13.5257
+"24","Denver-Dallas-Fort Worth","Denver","Dallas-Fort Worth",63,"Denver CO","Dallas-Fort Worth TX","Truck",1100.0572,904.9299
+"25","Denver-Lake Charles","Denver","Lake Charles",64,"Denver CO","Lake Charles LA","Truck",12.1427,14.6736
+"26","Denver-Laredo","Denver","Laredo",65,"Denver CO","Laredo TX","Truck",250.0568,276.1555
+"27","Denver-Oklahoma City","Denver","Oklahoma City",67,"Denver CO","Oklahoma City OK","Truck",3770.977,2797.293
+"28","Denver-Port of Houston","Denver","Port of Houston",68,"Denver CO","Port of Houston TX","Truck",341.322,370.3257
+"29","Denver-Port of New Orleans","Denver","Port of New Orleans",69,"Denver CO","Port of New Orleans LA","Truck",18.8521,26.0824
+"30","Denver-San Antonio","Denver","San Antonio",70,"Denver CO","San Antonio TX","Truck",41.6003,45.2203
+"31","Denver-Tulsa","Denver","Tulsa",71,"Denver CO","Tulsa OK","Truck",272.701,208.9185
+"32","Denver-Wichita","Denver","Wichita",72,"Denver CO","Wichita KS","Truck",198.9097,113.3717
+"33","El Paso-Laredo","El Paso","Laredo",82,"El Paso TX","Laredo TX","Truck",200.9486,136.5813
+"34","El Paso-Port of Houston","El Paso","Port of Houston",86,"El Paso TX","Port of Houston TX","Truck",2107.8035,1534.8276
+"35","El Paso-Salt Lake City","El Paso","Salt Lake City",90,"El Paso TX","Salt Lake City UT","Truck",59.5149,56.6916
+"36","El Paso-San Antonio","El Paso","San Antonio",91,"El Paso TX","San Antonio TX","Truck",452.2024,241.1681
+"37","Fresno-Albuquerque","Fresno","Albuquerque",95,"Fresno CA","Albuquerque NM","Truck",23.4022,25.0365
+"38","Fresno-Austin","Fresno","Austin",96,"Fresno CA","Austin TX","Truck",2.6084,4.2609
+"39","Fresno-Baton Rouge","Fresno","Baton Rouge",97,"Fresno CA","Baton Rouge LA","Truck",0.6551,1.3294
+"40","Fresno-Beaumont","Fresno","Beaumont",98,"Fresno CA","Beaumont TX","Truck",0.0572,0.1069
+"41","Fresno-Corpus Christi","Fresno","Corpus Christi",99,"Fresno CA","Corpus Christi TX","Truck",0.4589,0.8231
+"42","Fresno-Dallas-Fort Worth","Fresno","Dallas-Fort Worth",100,"Fresno CA","Dallas-Fort Worth TX","Truck",94.7245,150.9601
+"43","Fresno-Denver","Fresno","Denver",101,"Fresno CA","Denver CO","Truck",100.2402,118.7264
+"44","Fresno-Laredo","Fresno","Laredo",103,"Fresno CA","Laredo TX","Truck",39.8555,69.5225
+"45","Fresno-Las Vegas","Fresno","Las Vegas",104,"Fresno CA","Las Vegas NV","Truck",202.8633,103.8298
+"46","Fresno-Oklahoma City","Fresno","Oklahoma City",106,"Fresno CA","Oklahoma City OK","Truck",6.2165,9.2578
+"47","Fresno-Port of Houston","Fresno","Port of Houston",107,"Fresno CA","Port of Houston TX","Truck",220.9822,392.2772
+"48","Fresno-Port of New Orleans","Fresno","Port of New Orleans",109,"Fresno CA","Port of New Orleans LA","Truck",11.809,25.3027
+"49","Fresno-Salt Lake City","Fresno","Salt Lake City",111,"Fresno CA","Salt Lake City UT","Truck",202.931,164.8619
+"50","Fresno-San Antonio","Fresno","San Antonio",112,"Fresno CA","San Antonio TX","Truck",81.1697,129.6253
+"51","Fresno-Tulsa","Fresno","Tulsa",113,"Fresno CA","Tulsa OK","Truck",19.1945,30.8178
+"52","Fresno-Wichita","Fresno","Wichita",114,"Fresno CA","Wichita KS","Truck",11.1001,18.5501
+"53","Lake Charles-Oklahoma City","Lake Charles","Oklahoma City",117,"Lake Charles LA","Oklahoma City OK","Truck",36.5015,22.6378
+"54","Lake Charles-Port of New Orleans","Lake Charles","Port of New Orleans",118,"Lake Charles LA","Port of New Orleans LA","Truck",251.9823,61.3953
+"55","Lake Charles-Tulsa","Lake Charles","Tulsa",119,"Lake Charles LA","Tulsa OK","Truck",26.1147,13.9773
+"56","Laredo-San Antonio","Laredo","San Antonio",131,"Laredo TX","San Antonio TX","Truck",2774.8255,437.1149
+"57","Las Vegas-Albuquerque","Las Vegas","Albuquerque",134,"Las Vegas NV","Albuquerque NM","Truck",162.7819,134.4277
+"58","Las Vegas-Austin","Las Vegas","Austin",135,"Las Vegas NV","Austin TX","Truck",11.3459,16.2786
+"59","Las Vegas-Beaumont","Las Vegas","Beaumont",137,"Las Vegas NV","Beaumont TX","Truck",168.2897,275.6464
+"60","Las Vegas-Corpus Christi","Las Vegas","Corpus Christi",138,"Las Vegas NV","Corpus Christi TX","Truck",0.7194,1.1366
+"61","Las Vegas-Dallas-Fort Worth","Las Vegas","Dallas-Fort Worth",139,"Las Vegas NV","Dallas-Fort Worth TX","Truck",87.0408,118.931
+"62","Las Vegas-Laredo","Las Vegas","Laredo",142,"Las Vegas NV","Laredo TX","Truck",58.0613,90.4913
+"63","Las Vegas-Oklahoma City","Las Vegas","Oklahoma City",144,"Las Vegas NV","Oklahoma City OK","Truck",6.657,8.3723
+"64","Las Vegas-Port of Houston","Las Vegas","Port of Houston",145,"Las Vegas NV","Port of Houston TX","Truck",51.2686,80.904
+"65","Las Vegas-Salt Lake City","Las Vegas","Salt Lake City",147,"Las Vegas NV","Salt Lake City UT","Truck",1188.2174,544.7867
+"66","Las Vegas-San Antonio","Las Vegas","San Antonio",148,"Las Vegas NV","San Antonio TX","Truck",24.7559,34.9749
+"67","Las Vegas-Tulsa","Las Vegas","Tulsa",149,"Las Vegas NV","Tulsa OK","Truck",6.8453,9.4082
+"68","Oklahoma City-Tulsa","Oklahoma City","Tulsa",152,"Oklahoma City OK","Tulsa OK","Truck",3488.6842,520.5966
+"69","Phoenix-Albuquerque","Phoenix","Albuquerque",154,"Phoenix AZ","Albuquerque NM","Truck",1078.2852,620.7641
+"70","Phoenix-Austin","Phoenix","Austin",155,"Phoenix AZ","Austin TX","Truck",99.9658,100.7055
+"71","Phoenix-Baton Rouge","Phoenix","Baton Rouge",156,"Phoenix AZ","Baton Rouge LA","Truck",24.0892,34.9724
+"72","Phoenix-Beaumont","Phoenix","Beaumont",157,"Phoenix AZ","Beaumont TX","Truck",1.1219,1.4592
+"73","Phoenix-Corpus Christi","Phoenix","Corpus Christi",158,"Phoenix AZ","Corpus Christi TX","Truck",1.7358,2.0459
+"74","Phoenix-Dallas-Fort Worth","Phoenix","Dallas-Fort Worth",159,"Phoenix AZ","Dallas-Fort Worth TX","Truck",526.819,571.0417
+"75","Phoenix-Denver","Phoenix","Denver",160,"Phoenix AZ","Denver CO","Truck",550.4043,467.6132
+"76","Phoenix-El Paso","Phoenix","El Paso",161,"Phoenix AZ","El Paso TX","Truck",614.2278,272.9093
+"77","Phoenix-Fresno","Phoenix","Fresno",162,"Phoenix AZ","Fresno CA","Truck",259.4504,165.69
+"78","Phoenix-Lake Charles","Phoenix","Lake Charles",163,"Phoenix AZ","Lake Charles LA","Truck",0.7727,1.0238
+"79","Phoenix-Laredo","Phoenix","Laredo",164,"Phoenix AZ","Laredo TX","Truck",183.833,205.6686
+"80","Phoenix-Las Vegas","Phoenix","Las Vegas",165,"Phoenix AZ","Las Vegas NV","Truck",1678.481,767.3868
+"81","Phoenix-Oklahoma City","Phoenix","Oklahoma City",167,"Phoenix AZ","Oklahoma City OK","Truck",65.4118,65.8133
+"82","Phoenix-Port of Houston","Phoenix","Port of Houston",168,"Phoenix AZ","Port of Houston TX","Truck",405.1892,475.7797
+"83","Phoenix-Port of Los Angeles/Long Beach","Phoenix","Port of Los Angeles/Long Beach",169,"Phoenix AZ","Port of Los Angeles/Long Beach CA","Truck",7695.0935,3208.207
+"84","Phoenix-Port of New Orleans","Phoenix","Port of New Orleans",170,"Phoenix AZ","Port of New Orleans LA","Truck",18.0998,27.5056
+"85","Phoenix-Sacramento","Phoenix","Sacramento",171,"Phoenix AZ","Sacramento CA","Truck",158.763,130.9918
+"86","Phoenix-Salt Lake City","Phoenix","Salt Lake City",172,"Phoenix AZ","Salt Lake City UT","Truck",448.2501,312.138
+"87","Phoenix-San Antonio","Phoenix","San Antonio",173,"Phoenix AZ","San Antonio TX","Truck",180.6245,175.6257
+"88","Phoenix-San Francisco","Phoenix","San Francisco",174,"Phoenix AZ","San Francisco CA","Truck",1280.8013,984.6947
+"89","Phoenix-Tucson","Phoenix","Tucson",175,"Phoenix AZ","Tucson AZ","Truck",8644.1729,1128.7921
+"90","Phoenix-Tulsa","Phoenix","Tulsa",176,"Phoenix AZ","Tulsa OK","Truck",18.4525,20.7521
+"91","Phoenix-Wichita","Phoenix","Wichita",177,"Phoenix AZ","Wichita KS","Truck",19.7271,21.5757
+"92","Port of Los Angeles/Long Beach-Albuquerque","Port of Los Angeles/Long Beach","Albuquerque",186,"Port of Los Angeles/Long Beach CA","Albuquerque NM","Truck",1308.7364,1188.4855
+"93","Port of Los Angeles/Long Beach-Austin","Port of Los Angeles/Long Beach","Austin",187,"Port of Los Angeles/Long Beach CA","Austin TX","Truck",114.14,159.9254
+"94","Port of Los Angeles/Long Beach-Baton Rouge","Port of Los Angeles/Long Beach","Baton Rouge",188,"Port of Los Angeles/Long Beach CA","Baton Rouge LA","Truck",292.3137,560.2457
+"95","Port of Los Angeles/Long Beach-Beaumont","Port of Los Angeles/Long Beach","Beaumont",189,"Port of Los Angeles/Long Beach CA","Beaumont TX","Truck",91.4605,157.1964
+"96","Port of Los Angeles/Long Beach-Corpus Christi","Port of Los Angeles/Long Beach","Corpus Christi",190,"Port of Los Angeles/Long Beach CA","Corpus Christi TX","Truck",23.1452,36.2212
+"97","Port of Los Angeles/Long Beach-Dallas-Fort Worth","Port of Los Angeles/Long Beach","Dallas-Fort Worth",191,"Port of Los Angeles/Long Beach CA","Dallas-Fort Worth TX","Truck",2299.4333,3428.0301
+"98","Port of Los Angeles/Long Beach-Denver","Port of Los Angeles/Long Beach","Denver",192,"Port of Los Angeles/Long Beach CA","Denver CO","Truck",1418.3533,1454.4766
+"99","Port of Los Angeles/Long Beach-Lake Charles","Port of Los Angeles/Long Beach","Lake Charles",193,"Port of Los Angeles/Long Beach CA","Lake Charles LA","Truck",61.3959,108.5288
+"100","Port of Los Angeles/Long Beach-Laredo","Port of Los Angeles/Long Beach","Laredo",194,"Port of Los Angeles/Long Beach CA","Laredo TX","Truck",959.789,1470.2744
+"101","Port of Los Angeles/Long Beach-Las Vegas","Port of Los Angeles/Long Beach","Las Vegas",195,"Port of Los Angeles/Long Beach CA","Las Vegas NV","Truck",6147.6028,2043.2171
+"102","Port of Los Angeles/Long Beach-Oklahoma City","Port of Los Angeles/Long Beach","Oklahoma City",197,"Port of Los Angeles/Long Beach CA","Oklahoma City OK","Truck",144.7181,192.5474
+"103","Port of Los Angeles/Long Beach-Port of Houston","Port of Los Angeles/Long Beach","Port of Houston",198,"Port of Los Angeles/Long Beach CA","Port of Houston TX","Truck",2392.0245,3914.936
+"104","Port of Los Angeles/Long Beach-Port of New Orleans","Port of Los Angeles/Long Beach","Port of New Orleans",199,"Port of Los Angeles/Long Beach CA","Port of New Orleans LA","Truck",252.4156,492.3239
+"105","Port of Los Angeles/Long Beach-Sacramento","Port of Los Angeles/Long Beach","Sacramento",200,"Port of Los Angeles/Long Beach CA","Sacramento CA","Truck",3263.3937,1653.0995
+"106","Port of Los Angeles/Long Beach-Salt Lake City","Port of Los Angeles/Long Beach","Salt Lake City",201,"Port of Los Angeles/Long Beach CA","Salt Lake City UT","Truck",3069.1944,2374.6337
+"107","Port of Los Angeles/Long Beach-San Antonio","Port of Los Angeles/Long Beach","San Antonio",202,"Port of Los Angeles/Long Beach CA","San Antonio TX","Truck",385.4251,541.1283
+"108","Port of Los Angeles/Long Beach-Tulsa","Port of Los Angeles/Long Beach","Tulsa",203,"Port of Los Angeles/Long Beach CA","Tulsa OK","Truck",257.3934,372.4584
+"109","Port of Los Angeles/Long Beach-Wichita","Port of Los Angeles/Long Beach","Wichita",204,"Port of Los Angeles/Long Beach CA","Wichita KS","Truck",145.4069,208.7497
+"110","Port of New Orleans-Oklahoma City","Port of New Orleans","Oklahoma City",206,"Port of New Orleans LA","Oklahoma City OK","Truck",16.0562,11.6773
+"111","Port of New Orleans-Tulsa","Port of New Orleans","Tulsa",207,"Port of New Orleans LA","Tulsa OK","Truck",89.8382,60.6193
+"112","Sacramento-Albuquerque","Sacramento","Albuquerque",209,"Sacramento CA","Albuquerque NM","Truck",35.9733,42.3264
+"113","Sacramento-Austin","Sacramento","Austin",210,"Sacramento CA","Austin TX","Truck",2.6387,4.806
+"114","Sacramento-Baton Rouge","Sacramento","Baton Rouge",211,"Sacramento CA","Baton Rouge LA","Truck",33.0122,75.3575
+"115","Sacramento-Beaumont","Sacramento","Beaumont",212,"Sacramento CA","Beaumont TX","Truck",2.1079,4.3235
+"116","Sacramento-Corpus Christi","Sacramento","Corpus Christi",213,"Sacramento CA","Corpus Christi TX","Truck",0.6123,1.2142
+"117","Sacramento-Dallas-Fort Worth","Sacramento","Dallas-Fort Worth",214,"Sacramento CA","Dallas-Fort Worth TX","Truck",107.817,195.2763
+"118","Sacramento-Denver","Sacramento","Denver",215,"Sacramento CA","Denver CO","Truck",80.0104,94.5586
+"119","Sacramento-Laredo","Sacramento","Laredo",217,"Sacramento CA","Laredo TX","Truck",83.3303,161.9646
+"120","Sacramento-Las Vegas","Sacramento","Las Vegas",218,"Sacramento CA","Las Vegas NV","Truck",175.2509,87.4217
+"121","Sacramento-Oklahoma City","Sacramento","Oklahoma City",220,"Sacramento CA","Oklahoma City OK","Truck",17.9414,29.9788
+"122","Sacramento-Port of Houston","Sacramento","Port of Houston",221,"Sacramento CA","Port of Houston TX","Truck",140.4463,278.7293
+"123","Sacramento-Port of New Orleans","Sacramento","Port of New Orleans",222,"Sacramento CA","Port of New Orleans LA","Truck",3.4316,8.0936
+"124","Sacramento-Salt Lake City","Sacramento","Salt Lake City",223,"Sacramento CA","Salt Lake City UT","Truck",285.3828,196.2835
+"125","Sacramento-San Antonio","Sacramento","San Antonio",224,"Sacramento CA","San Antonio TX","Truck",6.8954,12.4057
+"126","Sacramento-Tulsa","Sacramento","Tulsa",225,"Sacramento CA","Tulsa OK","Truck",24.2857,43.7502
+"127","Sacramento-Wichita","Sacramento","Wichita",226,"Sacramento CA","Wichita KS","Truck",26.9115,45.3238
+"128","San Diego-Albuquerque","San Diego","Albuquerque",254,"San Diego CA","Albuquerque NM","Truck",28.5887,28.3774
+"129","San Diego-Austin","San Diego","Austin",255,"San Diego CA","Austin TX","Truck",17.3223,22.8717
+"130","San Diego-Baton Rouge","San Diego","Baton Rouge",256,"San Diego CA","Baton Rouge LA","Truck",1.4574,2.5757
+"131","San Diego-Beaumont","San Diego","Beaumont",257,"San Diego CA","Beaumont TX","Truck",1.602,2.5576
+"132","San Diego-Corpus Christi","San Diego","Corpus Christi",258,"San Diego CA","Corpus Christi TX","Truck",9.8768,14.3
+"133","San Diego-Dallas-Fort Worth","San Diego","Dallas-Fort Worth",259,"San Diego CA","Dallas-Fort Worth TX","Truck",176.3017,241.8434
+"134","San Diego-Denver","San Diego","Denver",260,"San Diego CA","Denver CO","Truck",160.7031,176.09
+"135","San Diego-El Paso","San Diego","El Paso",261,"San Diego CA","El Paso TX","Truck",93.5355,73.6752
+"136","San Diego-Fresno","San Diego","Fresno",262,"San Diego CA","Fresno CA","Truck",333.2571,117.6895
+"137","San Diego-Lake Charles","San Diego","Lake Charles",263,"San Diego CA","Lake Charles LA","Truck",0.4387,0.7188
+"138","San Diego-Laredo","San Diego","Laredo",264,"San Diego CA","Laredo TX","Truck",205.0135,293.7259
+"139","San Diego-Las Vegas","San Diego","Las Vegas",265,"San Diego CA","Las Vegas NV","Truck",281.4172,114.6989
+"140","San Diego-Oklahoma City","San Diego","Oklahoma City",267,"San Diego CA","Oklahoma City OK","Truck",11.1132,15.2175
+"141","San Diego-Port of Houston","San Diego","Port of Houston",269,"San Diego CA","Port of Houston TX","Truck",138.656,203.5989
+"142","San Diego-Port of Los Angeles/Long Beach","San Diego","Port of Los Angeles/Long Beach",270,"San Diego CA","Port of Los Angeles/Long Beach CA","Truck",19632.9964,2347.8504
+"143","San Diego-Port of New Orleans","San Diego","Port of New Orleans",271,"San Diego CA","Port of New Orleans LA","Truck",4.1569,7.611
+"144","San Diego-Salt Lake City","San Diego","Salt Lake City",273,"San Diego CA","Salt Lake City UT","Truck",138.3695,103.2315
+"145","San Diego-San Antonio","San Diego","San Antonio",274,"San Diego CA","San Antonio TX","Truck",21.2113,27.2346
+"146","San Diego-San Francisco","San Diego","San Francisco",275,"San Diego CA","San Francisco CA","Truck",2987.3395,1448.9559
+"147","San Diego-Tulsa","San Diego","Tulsa",277,"San Diego CA","Tulsa OK","Truck",20.2002,30.0184
+"148","San Diego-Wichita","San Diego","Wichita",278,"San Diego CA","Wichita KS","Truck",8.5309,12.3924
+"149","San Francisco-Albuquerque","San Francisco","Albuquerque",279,"San Francisco CA","Albuquerque NM","Truck",150.8622,194.9901
+"150","San Francisco-Austin","San Francisco","Austin",280,"San Francisco CA","Austin TX","Truck",175.2865,309.5289
+"151","San Francisco-Baton Rouge","San Francisco","Baton Rouge",281,"San Francisco CA","Baton Rouge LA","Truck",24.1873,52.7669
+"152","San Francisco-Beaumont","San Francisco","Beaumont",282,"San Francisco CA","Beaumont TX","Truck",187.7307,374.4438
+"153","San Francisco-Corpus Christi","San Francisco","Corpus Christi",283,"San Francisco CA","Corpus Christi TX","Truck",8.5312,16.2232
+"154","San Francisco-Dallas-Fort Worth","San Francisco","Dallas-Fort Worth",284,"San Francisco CA","Dallas-Fort Worth TX","Truck",716.1854,1247.4591
+"155","San Francisco-Denver","San Francisco","Denver",285,"San Francisco CA","Denver CO","Truck",634.4266,819.1525
+"156","San Francisco-Fresno","San Francisco","Fresno",286,"San Francisco CA","Fresno CA","Truck",6007.2485,1209.2099
+"157","San Francisco-Lake Charles","San Francisco","Lake Charles",287,"San Francisco CA","Lake Charles LA","Truck",7.5078,15.6079
+"158","San Francisco-Laredo","San Francisco","Laredo",288,"San Francisco CA","Laredo TX","Truck",687.7128,1291.3493
+"159","San Francisco-Las Vegas","San Francisco","Las Vegas",289,"San Francisco CA","Las Vegas NV","Truck",400.2462,210.555
+"160","San Francisco-Oklahoma City","San Francisco","Oklahoma City",291,"San Francisco CA","Oklahoma City OK","Truck",185.1461,302.205
+"161","San Francisco-Port of Houston","San Francisco","Port of Houston",292,"San Francisco CA","Port of Houston TX","Truck",607.7189,1159.3515
+"162","San Francisco-Port of New Orleans","San Francisco","Port of New Orleans",294,"San Francisco CA","Port of New Orleans LA","Truck",88.4782,202.6352
+"163","San Francisco-Salt Lake City","San Francisco","Salt Lake City",296,"San Francisco CA","Salt Lake City UT","Truck",1475.1229,1210.825
+"164","San Francisco-San Antonio","San Francisco","San Antonio",297,"San Francisco CA","San Antonio TX","Truck",323.6911,560.0956
+"165","San Francisco-Tulsa","San Francisco","Tulsa",298,"San Francisco CA","Tulsa OK","Truck",230.9254,402.6486
+"166","San Francisco-Wichita","San Francisco","Wichita",299,"San Francisco CA","Wichita KS","Truck",13.5837,23.1178
+"167","Tucson-Albuquerque","Tucson","Albuquerque",300,"Tucson AZ","Albuquerque NM","Truck",86.7862,41.4944
+"168","Tucson-Austin","Tucson","Austin",301,"Tucson AZ","Austin TX","Truck",11.0327,10.2699
+"169","Tucson-Baton Rouge","Tucson","Baton Rouge",302,"Tucson AZ","Baton Rouge LA","Truck",7.1867,10.0469
+"170","Tucson-Beaumont","Tucson","Beaumont",303,"Tucson AZ","Beaumont TX","Truck",1.4833,1.8238
+"171","Tucson-Corpus Christi","Tucson","Corpus Christi",304,"Tucson AZ","Corpus Christi TX","Truck",3.7046,3.9704
+"172","Tucson-Dallas-Fort Worth","Tucson","Dallas-Fort Worth",305,"Tucson AZ","Dallas-Fort Worth TX","Truck",79.3039,76.7146
+"173","Tucson-Denver","Tucson","Denver",306,"Tucson AZ","Denver CO","Truck",38.5823,34.332
+"174","Tucson-El Paso","Tucson","El Paso",307,"Tucson AZ","El Paso TX","Truck",134.7994,50.1866
+"175","Tucson-Fresno","Tucson","Fresno",308,"Tucson AZ","Fresno CA","Truck",48.773,36.6226
+"176","Tucson-Lake Charles","Tucson","Lake Charles",309,"Tucson AZ","Lake Charles LA","Truck",0.7967,1.0103
+"177","Tucson-Laredo","Tucson","Laredo",310,"Tucson AZ","Laredo TX","Truck",59.5493,61.9037
+"178","Tucson-Las Vegas","Tucson","Las Vegas",311,"Tucson AZ","Las Vegas NV","Truck",277.0149,155.8223
+"179","Tucson-Oklahoma City","Tucson","Oklahoma City",313,"Tucson AZ","Oklahoma City OK","Truck",1.9599,1.8935
+"180","Tucson-Port of Houston","Tucson","Port of Houston",314,"Tucson AZ","Port of Houston TX","Truck",68.8497,77.6356
+"181","Tucson-Port of Los Angeles/Long Beach","Tucson","Port of Los Angeles/Long Beach",315,"Tucson AZ","Port of Los Angeles/Long Beach CA","Truck",1502.2539,762.0661
+"182","Tucson-Port of New Orleans","Tucson","Port of New Orleans",316,"Tucson AZ","Port of New Orleans LA","Truck",6.7836,9.7592
+"183","Tucson-Sacramento","Tucson","Sacramento",317,"Tucson AZ","Sacramento CA","Truck",73.4401,68.3941
+"184","Tucson-Salt Lake City","Tucson","Salt Lake City",318,"Tucson AZ","Salt Lake City UT","Truck",45.0269,36.7071
+"185","Tucson-San Antonio","Tucson","San Antonio",319,"Tucson AZ","San Antonio TX","Truck",10.4185,9.5495
+"186","Tucson-San Francisco","Tucson","San Francisco",320,"Tucson AZ","San Francisco CA","Truck",362.0931,344.6948
+"187","Tucson-Tulsa","Tucson","Tulsa",321,"Tucson AZ","Tulsa OK","Truck",3.5108,3.8016
+"188","Tucson-Wichita","Tucson","Wichita",322,"Tucson AZ","Wichita KS","Truck",14.5128,16.0184
+"189","Wichita-Tulsa","Wichita","Tulsa",325,"Wichita KS","Tulsa OK","Truck",712.1735,146.4352
+"190","Albuquerque-Baton Rouge","Albuquerque","Baton Rouge",2,"Baton Rouge LA","Albuquerque NM","Truck",73.0394,88.0263
+"191","Albuquerque-Denver","Albuquerque","Denver",6,"Denver CO","Albuquerque NM","Truck",1239.5297,624.2659
+"192","Albuquerque-Lake Charles","Albuquerque","Lake Charles",7,"Lake Charles LA","Albuquerque NM","Truck",36.9245,39.1894
+"193","Albuquerque-Little Rock","Albuquerque","Little Rock",9,"Little Rock AR","Albuquerque NM","Truck",49.8653,54.2936
+"194","Albuquerque-Port of New Orleans","Albuquerque","Port of New Orleans",12,"Port of New Orleans LA","Albuquerque NM","Truck",182.7419,236.3218
+"195","Albuquerque-Wichita","Albuquerque","Wichita",15,"Wichita KS","Albuquerque NM","Truck",34.5775,26.5533
+"196","Austin-Baton Rouge","Austin","Baton Rouge",16,"Baton Rouge LA","Austin TX","Truck",19.3013,9.2151
+"197","Austin-Lake Charles","Austin","Lake Charles",19,"Lake Charles LA","Austin TX","Truck",27.1078,9.1324
+"198","Austin-Little Rock","Austin","Little Rock",20,"Little Rock AR","Austin TX","Truck",166.105,98.4259
+"199","Austin-Oklahoma City","Austin","Oklahoma City",21,"Oklahoma City OK","Austin TX","Truck",107.2696,43.6741
+"200","Austin-Port of New Orleans","Austin","Port of New Orleans",23,"Port of New Orleans LA","Austin TX","Truck",40.4579,22.4829
+"201","Austin-Tulsa","Austin","Tulsa",24,"Tulsa OK","Austin TX","Truck",43.4816,21.3431
+"202","Austin-Wichita","Austin","Wichita",25,"Wichita KS","Austin TX","Truck",10.3713,5.8808
+"203","Baton Rouge-Little Rock","Baton Rouge","Little Rock",26,"Little Rock AR","Baton Rouge LA","Truck",403.4324,205.9362
+"204","Baton Rouge-Wichita","Baton Rouge","Wichita",30,"Wichita KS","Baton Rouge LA","Truck",2.7945,2.3154
+"205","Beaumont-Baton Rouge","Beaumont","Baton Rouge",31,"Baton Rouge LA","Beaumont TX","Truck",766.5507,158.8344
+"206","Beaumont-Lake Charles","Beaumont","Lake Charles",32,"Lake Charles LA","Beaumont TX","Truck",479.4371,26.6073
+"207","Beaumont-Little Rock","Beaumont","Little Rock",33,"Little Rock AR","Beaumont TX","Truck",495.5715,256.0059
+"208","Beaumont-Oklahoma City","Beaumont","Oklahoma City",34,"Oklahoma City OK","Beaumont TX","Truck",662.3428,378.8954
+"209","Beaumont-Port of New Orleans","Beaumont","Port of New Orleans",35,"Port of New Orleans LA","Beaumont TX","Truck",70.5441,20.0547
+"210","Beaumont-Tulsa","Beaumont","Tulsa",36,"Tulsa OK","Beaumont TX","Truck",7.3321,3.4636
+"211","Beaumont-Wichita","Beaumont","Wichita",37,"Wichita KS","Beaumont TX","Truck",3.5482,2.4543
+"212","Corpus Christi-Austin","Corpus Christi","Austin",38,"Austin TX","Corpus Christi TX","Truck",1057.7483,250.2886
+"213","Corpus Christi-Baton Rouge","Corpus Christi","Baton Rouge",39,"Baton Rouge LA","Corpus Christi TX","Truck",16.8275,8.9828
+"214","Corpus Christi-Beaumont","Corpus Christi","Beaumont",40,"Beaumont TX","Corpus Christi TX","Truck",182.3189,57.8228
+"215","Corpus Christi-Lake Charles","Corpus Christi","Lake Charles",42,"Lake Charles LA","Corpus Christi TX","Truck",33.6921,11.3363
+"216","Corpus Christi-Little Rock","Corpus Christi","Little Rock",43,"Little Rock AR","Corpus Christi TX","Truck",214.2152,174.5783
+"217","Corpus Christi-Oklahoma City","Corpus Christi","Oklahoma City",44,"Oklahoma City OK","Corpus Christi TX","Truck",64.7349,40.5797
+"218","Corpus Christi-Port of New Orleans","Corpus Christi","Port of New Orleans",46,"Port of New Orleans LA","Corpus Christi TX","Truck",24.3256,15.3496
+"219","Corpus Christi-Tulsa","Corpus Christi","Tulsa",48,"Tulsa OK","Corpus Christi TX","Truck",4.9158,3.5396
+"220","Corpus Christi-Wichita","Corpus Christi","Wichita",49,"Wichita KS","Corpus Christi TX","Truck",1.4377,1.1481
+"221","Dallas-Fort Worth-Baton Rouge","Dallas-Fort Worth","Baton Rouge",50,"Baton Rouge LA","Dallas-Fort Worth TX","Truck",989.2031,447.9961
+"222","Dallas-Fort Worth-Beaumont","Dallas-Fort Worth","Beaumont",51,"Beaumont TX","Dallas-Fort Worth TX","Truck",1207.8993,449.449
+"223","Dallas-Fort Worth-Lake Charles","Dallas-Fort Worth","Lake Charles",52,"Lake Charles LA","Dallas-Fort Worth TX","Truck",368.5358,149.1205
+"224","Dallas-Fort Worth-Little Rock","Dallas-Fort Worth","Little Rock",53,"Little Rock AR","Dallas-Fort Worth TX","Truck",4617.43,2037.5355
+"225","Dallas-Fort Worth-Oklahoma City","Dallas-Fort Worth","Oklahoma City",54,"Oklahoma City OK","Dallas-Fort Worth TX","Truck",3287.4929,762.8339
+"226","Dallas-Fort Worth-Port of New Orleans","Dallas-Fort Worth","Port of New Orleans",56,"Port of New Orleans LA","Dallas-Fort Worth TX","Truck",1216.4478,652.562
+"227","Dallas-Fort Worth-Tulsa","Dallas-Fort Worth","Tulsa",57,"Tulsa OK","Dallas-Fort Worth TX","Truck",7386.0421,1934.2182
+"228","Dallas-Fort Worth-Wichita","Dallas-Fort Worth","Wichita",58,"Wichita KS","Dallas-Fort Worth TX","Truck",737.7699,304.7716
+"229","Denver-Little Rock","Denver","Little Rock",66,"Little Rock AR","Denver CO","Truck",463.6984,451.8614
+"230","El Paso-Albuquerque","El Paso","Albuquerque",73,"Albuquerque NM","El Paso TX","Truck",2612.5851,737.8072
+"231","El Paso-Austin","El Paso","Austin",74,"Austin TX","El Paso TX","Truck",476.2801,272.1827
+"232","El Paso-Baton Rouge","El Paso","Baton Rouge",75,"Baton Rouge LA","El Paso TX","Truck",16.5261,16.7499
+"233","El Paso-Beaumont","El Paso","Beaumont",76,"Beaumont TX","El Paso TX","Truck",84.441,71.3035
+"234","El Paso-Corpus Christi","El Paso","Corpus Christi",77,"Corpus Christi TX","El Paso TX","Truck",196.5047,146.3906
+"235","El Paso-Dallas-Fort Worth","El Paso","Dallas-Fort Worth",78,"Dallas-Fort Worth TX","El Paso TX","Truck",2179.6156,1397.5292
+"236","El Paso-Denver","El Paso","Denver",79,"Denver CO","El Paso TX","Truck",87.732,62.7916
+"237","El Paso-Fresno","El Paso","Fresno",80,"Fresno CA","El Paso TX","Truck",9.7459,10.4055
+"238","El Paso-Lake Charles","El Paso","Lake Charles",81,"Lake Charles LA","El Paso TX","Truck",13.4025,11.8438
+"239","El Paso-Las Vegas","El Paso","Las Vegas",83,"Las Vegas NV","El Paso TX","Truck",59.3985,62.7178
+"240","El Paso-Little Rock","El Paso","Little Rock",84,"Little Rock AR","El Paso TX","Truck",59.2786,61.1976
+"241","El Paso-Oklahoma City","El Paso","Oklahoma City",85,"Oklahoma City OK","El Paso TX","Truck",45.3947,32.0949
+"242","El Paso-Port of Los Angeles/Long Beach","El Paso","Port of Los Angeles/Long Beach",87,"Port of Los Angeles/Long Beach CA","El Paso TX","Truck",644.7481,538.2919
+"243","El Paso-Port of New Orleans","El Paso","Port of New Orleans",88,"Port of New Orleans LA","El Paso TX","Truck",20.2893,21.7848
+"244","El Paso-Sacramento","El Paso","Sacramento",89,"Sacramento CA","El Paso TX","Truck",22.2002,27.9622
+"245","El Paso-San Francisco","El Paso","San Francisco",92,"San Francisco CA","El Paso TX","Truck",153.1464,191.6027
+"246","El Paso-Tulsa","El Paso","Tulsa",93,"Tulsa OK","El Paso TX","Truck",19.1094,16.5145
+"247","El Paso-Wichita","El Paso","Wichita",94,"Wichita KS","El Paso TX","Truck",19.4585,15.7706
+"248","Fresno-Little Rock","Fresno","Little Rock",105,"Little Rock AR","Fresno CA","Truck",27.3926,51.195
+"249","Fresno-Port of Los Angeles/Long Beach","Fresno","Port of Los Angeles/Long Beach",108,"Port of Los Angeles/Long Beach CA","Fresno CA","Truck",4173.7647,1268.1035
+"250","Fresno-Sacramento","Fresno","Sacramento",110,"Sacramento CA","Fresno CA","Truck",1573.0694,312.3942
+"251","Lake Charles-Baton Rouge","Lake Charles","Baton Rouge",115,"Baton Rouge LA","Lake Charles LA","Truck",426.0078,72.6369
+"252","Lake Charles-Little Rock","Lake Charles","Little Rock",116,"Little Rock AR","Lake Charles LA","Truck",376.9851,172.8376
+"253","Lake Charles-Wichita","Lake Charles","Wichita",120,"Wichita KS","Lake Charles LA","Truck",7.5234,5.928
+"254","Laredo-Austin","Laredo","Austin",121,"Austin TX","Laredo TX","Truck",986.8449,235.9962
+"255","Laredo-Baton Rouge","Laredo","Baton Rouge",122,"Baton Rouge LA","Laredo TX","Truck",168.6194,109.347
+"256","Laredo-Beaumont","Laredo","Beaumont",123,"Beaumont TX","Laredo TX","Truck",191.7712,87.1661
+"257","Laredo-Corpus Christi","Laredo","Corpus Christi",124,"Corpus Christi TX","Laredo TX","Truck",1326.399,207.8158
+"258","Laredo-Dallas-Fort Worth","Laredo","Dallas-Fort Worth",125,"Dallas-Fort Worth TX","Laredo TX","Truck",4059.4926,1873.3991
+"259","Laredo-Lake Charles","Laredo","Lake Charles",126,"Lake Charles LA","Laredo TX","Truck",14.8635,7.4372
+"260","Laredo-Little Rock","Laredo","Little Rock",127,"Little Rock AR","Laredo TX","Truck",430.8187,353.2896
+"261","Laredo-Oklahoma City","Laredo","Oklahoma City",128,"Oklahoma City OK","Laredo TX","Truck",135.084,86.1251
+"262","Laredo-Port of Houston","Laredo","Port of Houston",129,"Port of Houston TX","Laredo TX","Truck",5513.254,2028.8323
+"263","Laredo-Port of New Orleans","Laredo","Port of New Orleans",130,"Port of New Orleans LA","Laredo TX","Truck",97.8292,70.7592
+"264","Laredo-Tulsa","Laredo","Tulsa",132,"Tulsa OK","Laredo TX","Truck",118.3733,85.9984
+"265","Laredo-Wichita","Laredo","Wichita",133,"Wichita KS","Laredo TX","Truck",35.3469,28.4973
+"266","Las Vegas-Baton Rouge","Las Vegas","Baton Rouge",136,"Baton Rouge LA","Las Vegas NV","Truck",1.2189,2.1824
+"267","Las Vegas-Denver","Las Vegas","Denver",140,"Denver CO","Las Vegas NV","Truck",126.8133,105.1529
+"268","Las Vegas-Lake Charles","Las Vegas","Lake Charles",141,"Lake Charles LA","Las Vegas NV","Truck",0.2166,0.3709
+"269","Las Vegas-Little Rock","Las Vegas","Little Rock",143,"Little Rock AR","Las Vegas NV","Truck",39.9673,66.9042
+"270","Las Vegas-Port of New Orleans","Las Vegas","Port of New Orleans",146,"Port of New Orleans LA","Las Vegas NV","Truck",3.7686,7.0087
+"271","Las Vegas-Wichita","Las Vegas","Wichita",150,"Wichita KS","Las Vegas NV","Truck",17.3713,22.3659
+"272","Oklahoma City-Little Rock","Oklahoma City","Little Rock",151,"Little Rock AR","Oklahoma City OK","Truck",744.5782,318.1132
+"273","Oklahoma City-Wichita","Oklahoma City","Wichita",153,"Wichita KS","Oklahoma City OK","Truck",295.6781,53.2544
+"274","Phoenix-Little Rock","Phoenix","Little Rock",166,"Little Rock AR","Phoenix AZ","Truck",147.5403,213.966
+"275","Port of Houston-Baton Rouge","Port of Houston","Baton Rouge",178,"Baton Rouge LA","Port of Houston TX","Truck",2011.1207,614.1393
+"276","Port of Houston-Beaumont","Port of Houston","Beaumont",179,"Beaumont TX","Port of Houston TX","Truck",9294.5545,953.4061
+"277","Port of Houston-Lake Charles","Port of Houston","Lake Charles",180,"Lake Charles LA","Port of Houston TX","Truck",1524.9475,223.1874
+"278","Port of Houston-Little Rock","Port of Houston","Little Rock",181,"Little Rock AR","Port of Houston TX","Truck",1893.7597,1014.5956
+"279","Port of Houston-Oklahoma City","Port of Houston","Oklahoma City",182,"Oklahoma City OK","Port of Houston TX","Truck",1074.2386,543.0593
+"280","Port of Houston-Port of New Orleans","Port of Houston","Port of New Orleans",183,"Port of New Orleans LA","Port of Houston TX","Truck",2625.6152,1064.8202
+"281","Port of Houston-Tulsa","Port of Houston","Tulsa",184,"Tulsa OK","Port of Houston TX","Truck",993.7017,551.6281
+"282","Port of Houston-Wichita","Port of Houston","Wichita",185,"Wichita KS","Port of Houston TX","Truck",149.6688,99.619
+"283","Port of Los Angeles/Long Beach-Little Rock","Port of Los Angeles/Long Beach","Little Rock",196,"Little Rock AR","Port of Los Angeles/Long Beach CA","Truck",850.9048,1522.5361
+"284","Port of New Orleans-Little Rock","Port of New Orleans","Little Rock",205,"Little Rock AR","Port of New Orleans LA","Truck",776.6139,466.1026
+"285","Port of New Orleans-Wichita","Port of New Orleans","Wichita",208,"Wichita KS","Port of New Orleans LA","Truck",13.3452,12.0364
+"286","Sacramento-Little Rock","Sacramento","Little Rock",219,"Little Rock AR","Sacramento CA","Truck",6.1266,12.3744
+"287","Salt Lake City-Albuquerque","Salt Lake City","Albuquerque",227,"Albuquerque NM","Salt Lake City UT","Truck",233.9083,180.3456
+"288","Salt Lake City-Austin","Salt Lake City","Austin",228,"Austin TX","Salt Lake City UT","Truck",8.8357,14.0576
+"289","Salt Lake City-Baton Rouge","Salt Lake City","Baton Rouge",229,"Baton Rouge LA","Salt Lake City UT","Truck",12.6054,23.6368
+"290","Salt Lake City-Beaumont","Salt Lake City","Beaumont",230,"Beaumont TX","Salt Lake City UT","Truck",2.7546,4.8483
+"291","Salt Lake City-Corpus Christi","Salt Lake City","Corpus Christi",231,"Corpus Christi TX","Salt Lake City UT","Truck",3.261,4.9711
+"292","Salt Lake City-Dallas-Fort Worth","Salt Lake City","Dallas-Fort Worth",232,"Dallas-Fort Worth TX","Salt Lake City UT","Truck",340.6525,474.1207
+"293","Salt Lake City-Denver","Salt Lake City","Denver",233,"Denver CO","Salt Lake City UT","Truck",1609.913,950.1343
+"294","Salt Lake City-Lake Charles","Salt Lake City","Lake Charles",234,"Lake Charles LA","Salt Lake City UT","Truck",0.4824,0.8724
+"295","Salt Lake City-Laredo","Salt Lake City","Laredo",235,"Laredo TX","Salt Lake City UT","Truck",177.0769,266.4837
+"296","Salt Lake City-Little Rock","Salt Lake City","Little Rock",236,"Little Rock AR","Salt Lake City UT","Truck",169.5607,269.3609
+"297","Salt Lake City-Oklahoma City","Salt Lake City","Oklahoma City",237,"Oklahoma City OK","Salt Lake City UT","Truck",39.2058,47.5249
+"298","Salt Lake City-Port of Houston","Salt Lake City","Port of Houston",238,"Port of Houston TX","Salt Lake City UT","Truck",164.9251,273.1421
+"299","Salt Lake City-Port of New Orleans","Salt Lake City","Port of New Orleans",239,"Port of New Orleans LA","Salt Lake City UT","Truck",4.9775,9.6907
+"300","Salt Lake City-San Antonio","Salt Lake City","San Antonio",240,"San Antonio TX","Salt Lake City UT","Truck",32.2261,43.725
+"301","Salt Lake City-Tulsa","Salt Lake City","Tulsa",241,"Tulsa OK","Salt Lake City UT","Truck",27.2211,35.5653
+"302","Salt Lake City-Wichita","Salt Lake City","Wichita",242,"Wichita KS","Salt Lake City UT","Truck",18.928,20.3981
+"303","San Antonio-Austin","San Antonio","Austin",243,"Austin TX","San Antonio TX","Truck",6661.0479,592.7495
+"304","San Antonio-Baton Rouge","San Antonio","Baton Rouge",244,"Baton Rouge LA","San Antonio TX","Truck",169.5373,83.3644
+"305","San Antonio-Beaumont","San Antonio","Beaumont",245,"Beaumont TX","San Antonio TX","Truck",295.7293,90.3948
+"306","San Antonio-Dallas-Fort Worth","San Antonio","Dallas-Fort Worth",246,"Dallas-Fort Worth TX","San Antonio TX","Truck",3516.1285,1090.1697
+"307","San Antonio-Lake Charles","San Antonio","Lake Charles",247,"Lake Charles LA","San Antonio TX","Truck",66.2877,23.4413
+"308","San Antonio-Little Rock","San Antonio","Little Rock",248,"Little Rock AR","San Antonio TX","Truck",188.6139,126.6536
+"309","San Antonio-Oklahoma City","San Antonio","Oklahoma City",249,"Oklahoma City OK","San Antonio TX","Truck",169.9757,81.808
+"310","San Antonio-Port of Houston","San Antonio","Port of Houston",250,"Port of Houston TX","San Antonio TX","Truck",7025.0769,1569.5027
+"311","San Antonio-Port of New Orleans","San Antonio","Port of New Orleans",251,"Port of New Orleans LA","San Antonio TX","Truck",135.2549,78.063
+"312","San Antonio-Tulsa","San Antonio","Tulsa",252,"Tulsa OK","San Antonio TX","Truck",137.0216,78.8388
+"313","San Antonio-Wichita","San Antonio","Wichita",253,"Wichita KS","San Antonio TX","Truck",22.615,14.7886
+"314","San Diego-Little Rock","San Diego","Little Rock",266,"Little Rock AR","San Diego CA","Truck",52.6776,91.5625
+"315","San Diego-Phoenix","San Diego","Phoenix",268,"Phoenix AZ","San Diego CA","Truck",382.65,138.6942
+"316","San Diego-Sacramento","San Diego","Sacramento",272,"Sacramento CA","San Diego CA","Truck",384.2371,207.6775
+"317","San Diego-Tucson","San Diego","Tucson",276,"Tucson AZ","San Diego CA","Truck",164.1967,72.8351
+"318","San Francisco-Little Rock","San Francisco","Little Rock",290,"Little Rock AR","San Francisco CA","Truck",155.9177,318.2838
+"319","San Francisco-Port of Los Angeles/Long Beach","San Francisco","Port of Los Angeles/Long Beach",293,"Port of Los Angeles/Long Beach CA","San Francisco CA","Truck",14197.4005,6607.9505
+"320","San Francisco-Sacramento","San Francisco","Sacramento",295,"Sacramento CA","San Francisco CA","Truck",18033.9108,2461.7173
+"321","Tucson-Little Rock","Tucson","Little Rock",312,"Little Rock AR","Tucson AZ","Truck",19.3107,26.4589
+"322","Tulsa-Little Rock","Tulsa","Little Rock",323,"Little Rock AR","Tulsa OK","Truck",5164.5378,1425.3972
+"323","Wichita-Little Rock","Wichita","Little Rock",324,"Little Rock AR","Wichita KS","Truck",468.1459,237.3773
