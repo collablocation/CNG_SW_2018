@@ -234,7 +234,7 @@ body <- dashboardBody(
                  checkboxInput("AADT_NHS0_compare","AADTT-Not on National Highway System",FALSE),
                  checkboxInput("ZIP_Fleet_compare","Truck Fleet Data (ZIP-based)"),
                  checkboxInput("Pipelines_compare","Natural Gas Pipelines"),
-                 checkboxInput("Centroids_compare","Metro Population Centroids"),
+                 checkboxInput("Centroids_compare","Metro O-D Centroids"),
                  style = "padding:0px 5px 0px 5px; margin-bottom: 10px;"
                ),
                wellPanel(
