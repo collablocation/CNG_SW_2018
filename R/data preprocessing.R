@@ -487,11 +487,16 @@ Pipeline <- ms_simplify(Pipeline)
 OD_paths <- ms_simplify(OD_paths)
 
 # Categorize 323 od paths into five groups in terms of ktons by using natural breaks (Jenks) classification method
-OD_paths2 <- OD_paths %>% 
-  mutate(WIDTH = ifelse(TOTAL_KTONS_2015 <= 600, "1",   # not using AADT12_v2 %in% 17:16386, "17-16386"
-                        ifelse(TOTAL_KTONS_2015 > 600 & TOTAL_KTONS_2015 <= 2000, "2",
-                               ifelse(TOTAL_KTONS_2015 > 2000 & TOTAL_KTONS_2015 <= 4500, "3",
-                                      ifelse(TOTAL_KTONS_2015 > 4500 & TOTAL_KTONS_2015 <= 9000, "4", "5")))))
+OD_paths_edit <- merge(OD_paths,od_table_coverage_final,by.x="PAIR",by.y="OD")
+OD_paths_edit <- OD_paths_edit %>% select(1:10,21:22,14)
+# write the final version of shapefile with kton and tonmile attributes
+writeOGR(OD_paths_edit,"C:/Users/Fangwu Wei/Dropbox/ABOR RIF Alt Fuels/Data/Update_2018",layer="OD_shortest_paths_final_v3_edit",
+         verbose=FALSE,driver="ESRI Shapefile")
+OD_paths2 <- OD_paths_edit %>% 
+  mutate(WIDTH = ifelse(TOTAL_KTONS_2015.y <= 600, "1",   # not using AADT12_v2 %in% 17:16386, "17-16386"
+                        ifelse(TOTAL_KTONS_2015.y > 600 & TOTAL_KTONS_2015.y <= 2000, "2",
+                               ifelse(TOTAL_KTONS_2015.y > 2000 & TOTAL_KTONS_2015.y <= 4500, "3",
+                                      ifelse(TOTAL_KTONS_2015.y > 4500 & TOTAL_KTONS_2015.y <= 9000, "4", "5")))))
 OD_paths2$WIDTH <- as.numeric(OD_paths2$WIDTH)
 
 rm(Annual_Average_Daily_Traffic_NHS0,
