@@ -15,7 +15,6 @@ library(htmltools) # for point popups
 library(httr)
 library(rsconnect)
 library(stringr)
-library(shinyTree) # generating an expandable/collapsed checkboxes (nested checkboxes)
 # packages used for simplifying spatial lines dataframes
 library(spdplyr) # for manipulating the attribute data inside the spatial data frame
 library(rmapshaper) # for manipulating the geometry (polygon, line, marker) part of the GeoJSON data
@@ -105,20 +104,29 @@ body <- dashboardBody(
                  style = "padding:0px 5px 0px 5px; margin-bottom: 10px;"
                ),
                wellPanel(
-                 checkboxInput("CNGs","Existing CNG Stations (green circles)",FALSE),
-                 checkboxInput("Truck","Truck Stops (red circles)",FALSE),
+                 bootstrapPage(
+                   div(style="display:inline-block; padding:0px 5px 0px 0px",checkboxInput("CNGs",span("Existing CNG Stations ",img(src='CNG.png',width=7,height=7)),FALSE)),
+                   br(style="padding:0px; margin:0px; height:0px")
+                 ),
+                 bootstrapPage(
+                   div(style="display:inline-block; padding:0px 5px 0px 0px",checkboxInput("Truck",span("Diesel Truck Stops ",img(src='Truck stop.png',width=7,height=7)),FALSE)),
+                   br(style="padding:0px; margin:0px; height:0px")
+                 ),
+                 bootstrapPage(
+                   div(style="display:inline-block; padding:0px 5px 0px 0px",checkboxInput("Centroids",span("Metro O-D Centroids ",img(src='Metro centroid.png',width=7,height=7)))),
+                   br(style="padding:0px; margin:0px; height:0px")
+                 ),
                  checkboxInput("AADT_NHS1","AADTT-Interstate",FALSE),
                  checkboxInput("AADT_NHS3","AADTT-Non-Interstate Strategic Highway Network",FALSE),
                  checkboxInput("AADT_NHS7","AADTT-Other National Highway System",FALSE),
                  checkboxInput("AADT_NHS0","AADTT-Not on National Highway System",FALSE),
-                 checkboxInput("ZIP_Fleet","Truck Fleet Data (ZIP-based)"),
                  checkboxInput("Pipelines","Natural Gas Pipelines"),
-                 checkboxInput("Centroids","Metro O-D Centroids"),
+                 checkboxInput("ZIP_Fleet","Truck Fleet Data (ZIP-based)"),
                  style = "padding:0px 5px 0px 5px; margin-bottom: 10px;"
                ),
                wellPanel(
                  bootstrapPage(
-                   div(p(style="padding:0px 0px 0px 0px;margin-bottom:5px",strong("Distance Calculation"))),
+                   div(p(style="padding:0px 0px 0px 0px;margin-bottom:5px",strong("Network Distance (via Google Maps)"))),
                    div(style="display:inline-block",textInput(inputId="from", label=NULL, value = "", width = 90, placeholder="Enter ID")),
                    div(style="display:inline-block","To"),
                    div(style="display:inline-block; padding:0px 15px 0px 0px",textInput(inputId="to", label=NULL, value = "", width = 90, placeholder="Enter ID"))
@@ -128,6 +136,21 @@ body <- dashboardBody(
                    div(style="display:inline-block; padding:5px 0px 5px 0px",title="Remove labels.",actionButton("removeLabels","Remove Labels")) #
                  ),
                  verbatimTextOutput(outputId = "distance_result"),
+                 hr(style = "margin-top: 3px; margin-bottom: 3px; border-width: 3px"), #border-style: dotted
+                 bootstrapPage(
+                   div(style="display:inline-block; padding:0px 0px 5px 0px",strong("Stations in Network Dist. Range (mi) "), img(src='Stations in network dist range.png', width=9,height=9))
+                 ),
+                 sliderInput("distance_range", label = NULL, min = 0, max = 300, value = c(100, 200), step = 5),
+                 bootstrapPage(
+                   div(style="display:inline-block",textInput(inputId="origin", label=NULL, value = "", width = 120, placeholder="Enter Origin ID")),
+                   div(style="display:inline-block; padding:0px 0px 0px 10px",strong("Origin ID")),
+                   br(style="padding:0px; margin:0px; height:0px")
+                 ),
+                 bootstrapPage(
+                   div(style="display:inline-block; padding:5px 5px 5px 0px",title="Visualizing CNGs and truck stops within a given driving range based on a selected origin.",actionButton("distCal2", "Calculate")),
+                   div(style="display:inline-block; padding:5px 0px 5px 0px",title="Remove labels.",actionButton("removeLabels2","Remove Labels")) 
+                 ),
+                 verbatimTextOutput(outputId = "distancerange_result"),
                  style = "padding:0px 5px 0px 5px; margin-bottom: 10px;"
                ),
                wellPanel(
@@ -135,10 +158,26 @@ body <- dashboardBody(
                  div(style = "display:inline-block; padding:0px 0px 5px 0px",textInput("driving_range",label=NULL,value="",placeholder = "Enter driving range...")),
                  div(style="display:inline-block; padding:0px 0px 5px 0px","miles"),
                  div(p(style="padding:3px 0px 0px 0px;margin-bottom:0px",strong("Show Coverage Gaps"))),
-                 checkboxInput("gaps_top_quartile","Top Quartile (tons)",FALSE),
-                 checkboxInput("gaps_2nd_quartile","2nd Quartile",FALSE),
-                 checkboxInput("gaps_3rd_quartile","3rd Quartile",FALSE),
-                 checkboxInput("gaps_4th_quartile","4th Quartile",FALSE),
+                 bootstrapPage(
+                   div(style="display:inline-block; padding:0px 5px 0px 0px",checkboxInput("gaps_top_quartile","Top Quartile (tons)",FALSE)),
+                   div(style="display:inline-block; padding:0px 30px 0px 0px",img(src='Coverage gap top.png',width=35,height=8)),
+                   br(style="padding:0px; margin:0px; height:0px")
+                 ),
+                 bootstrapPage(
+                   div(style="display:inline-block; padding:0px 5px 0px 0px",checkboxInput("gaps_2nd_quartile","2nd Quartile",FALSE)),
+                   div(style="display:inline-block; padding:0px 30px 0px 0px",img(src='Coverage gap 2nd.png',width=35,height=6)),
+                   br(style="padding:0px; margin:0px; height:0px")
+                 ),
+                 bootstrapPage(
+                   div(style="display:inline-block; padding:0px 5px 0px 0px",checkboxInput("gaps_3rd_quartile","3rd Quartile",FALSE)),
+                   div(style="display:inline-block; padding:0px 30px 0px 0px",img(src='Coverage gap 3rd.png',width=35,height=4)),
+                   br(style="padding:0px; margin:0px; height:0px")
+                 ),
+                 bootstrapPage(
+                   div(style="display:inline-block; padding:0px 5px 0px 0px",checkboxInput("gaps_4th_quartile","4th Quartile",FALSE)),
+                   div(style="display:inline-block; padding:0px 30px 0px 0px",img(src='Coverage gap 4th.png',width=35,height=2)),
+                   br(style="padding:0px; margin:0px; height:0px")
+                 ),
                  div(style = "padding:5px 0px 5px 0px",selectInput("od_pairs", label = "Origin-Destination Path", c(Choose='', OD_paths$PAIR), selectize=FALSE)),
                  style = "padding:0px 5px 0px 5px; margin-bottom: 10px;"
                ),
@@ -193,28 +232,19 @@ body <- dashboardBody(
         ),
         column(width = 2, style = "padding:0px 5px 0px 5px",
                wellPanel(
-                 div(p(style="padding:0px 0px 0px 5px;margin-bottom:0px",strong("Select group(s) and stage(s)"))),
-                 tags$div(style="font-size:10pt; padding:0px 0px 0px 0px; margin-bottom:0px; margin-top:0px",
-                          class=".jstree-node",
-                          shinyTree("groupstage_plot", checkbox = TRUE, theme = "proton")),
-                 style = "padding:0px 0px 20px 0px; margin-bottom: 0px; height:800px; overflow-y:scroll"
+                 uiOutput(style="padding:0px 0px 0px 5px;margin-bottom:0px","group_tableplot"),
+                 hr(style = "margin-top: 3px; margin-bottom: 3px; border-width: 3px"), 
+                 uiOutput(style="padding:0px 0px 0px 5px;margin-bottom:0px","stageiteration_tableplot"),
+                 style = "padding:0px 0px 20px 0px; margin-bottom: 0px; height:500px; overflow-y:scroll; overflow-x:scroll"
                ),
                wellPanel(
                  tags$div(style = "padding:5px 0px 5px 0px", title="Update the list of groups and stages.",
-                          actionButton("update_plot", "Update the list")),
+                          actionButton("update_tableplot", "Update the list")),
                  style = "padding:0px 0px 0px 5px; margin-bottom: 20px"
                ),
                wellPanel(
                  selectInput("xvar_plot", label = "X-axis variable", xaxis_vars, selected = NULL), # choices = c("GROUP_STAGE","AVERAGE AADTT","AVERAGE FLEET")
                  selectInput("yvar_plot", label = "Y-axis variable", yaxis_vars, selected = NULL),
-                 tags$small(paste0(
-                   "Note: A bar chart will be created to ",
-                   "compare one performance measure between ",
-                   "selected groups when GROUP_STAGE is ",
-                   "selected as X-axis variable. Otherwise, ",
-                   "a scatter plot will be generated to compare ",
-                   "two performance measures between groups."
-                 )),
                  style = "padding:0px 5px 0px 5px"
                )
         )
@@ -226,23 +256,31 @@ body <- dashboardBody(
                leafletOutput("map_compare",height=900)),
         column(width=2, style = "padding:0px 5px 0px 5px",
                wellPanel(
-                 checkboxInput("CNGs_compare","Existing CNG Stations (green circles)",FALSE),
-                 checkboxInput("Truck_compare","Truck Stops (red circles)",FALSE),
+                 bootstrapPage(
+                   div(style="display:inline-block; padding:0px 5px 0px 0px",checkboxInput("CNGs_compare",span("Existing CNG Stations ",img(src='CNG.png',width=7,height=7)),FALSE)),
+                   br(style="padding:0px; margin:0px; height:0px")
+                 ),
+                 bootstrapPage(
+                   div(style="display:inline-block; padding:0px 5px 0px 0px",checkboxInput("Truck_compare",span("Diesel Truck Stops ",img(src='Truck stop.png',width=7,height=7)),FALSE)),
+                   br(style="padding:0px; margin:0px; height:0px")
+                 ),
+                 bootstrapPage(
+                   div(style="display:inline-block; padding:0px 5px 0px 0px",checkboxInput("Centroids_compare",span("Metro O-D Centroids ",img(src='Metro centroid.png',width=7,height=7)))),
+                   br(style="padding:0px; margin:0px; height:0px")
+                 ),
                  checkboxInput("AADT_NHS1_compare","AADTT-Interstate",FALSE),
                  checkboxInput("AADT_NHS3_compare","AADTT-Non-Interstate Strategic Highway Network",FALSE),
                  checkboxInput("AADT_NHS7_compare","AADTT-Other National Highway System",FALSE),
                  checkboxInput("AADT_NHS0_compare","AADTT-Not on National Highway System",FALSE),
-                 checkboxInput("ZIP_Fleet_compare","Truck Fleet Data (ZIP-based)"),
                  checkboxInput("Pipelines_compare","Natural Gas Pipelines"),
-                 checkboxInput("Centroids_compare","Metro O-D Centroids"),
+                 checkboxInput("ZIP_Fleet_compare","Truck Fleet Data (ZIP-based)"),
                  style = "padding:0px 5px 0px 5px; margin-bottom: 10px;"
                ),
                wellPanel(
-                 div(p(style="padding:0px 0px 0px 0px;margin-bottom:0px",strong("Select group(s) and stage(s)"))),
-                 tags$div(style="font-size:10pt; padding:0px 0px 0px 0px; margin-bottom:0px; margin-top:0px",
-                          class=".jstree-node",
-                          shinyTree("groupstage_spatial", checkbox = TRUE, theme = "proton")),
-                 style = "padding:0px 0px 20px 0px; margin-bottom: 0px; height:800px; overflow-y:scroll"
+                 uiOutput(style="padding:0px 0px 0px 5px;margin-bottom:0px","group_spatial"),
+                 hr(style = "margin-top: 3px; margin-bottom: 3px; border-width: 3px"), 
+                 uiOutput(style="padding:0px 0px 0px 5px;margin-bottom:0px","stageiteration_spatial"),
+                 style = "padding:0px 0px 20px 0px; margin-bottom: 0px; height:500px; overflow-y:scroll; overflow-x:scroll"
                ),
                wellPanel(
                  tags$div(style = "padding:5px 0px 15px 0px",title="Update the list of groups and stages.",
@@ -260,13 +298,13 @@ body <- dashboardBody(
       tabPanel(
         title = strong("About"), id = "about", value = "about",
         br(),
-        tags$iframe(style="height:900px; width:100%",src="About.pdf")
+        htmlOutput("about") # show a pdf with default size
       ),
       
       tabPanel(
         title = strong("Help & Data"), id = "help", value = "help",
         br(),
-        tags$iframe(style="height:900px; width:100%",src="Help.pdf")
+        htmlOutput("help")
       )
     )
         )
@@ -291,9 +329,8 @@ server <- function(input, output, session){
       # Add base maps
       addTiles(group = "OpenStreetMap") %>%
       addProviderTiles("CartoDB.Positron", group = "Black & White") %>%
-      addTiles(urlTemplate = 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
-               attribution = paste('&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors','&copy; <a href="http://cartodb.com/attributions">CartoDB</a>'),group="Labels Only") %>%
       addProviderTiles("CartoDB.DarkMatter", group = "Awesome Dark") %>%
+      addProviderTiles("Esri.WorldImagery", group = "Satellite View") %>%
       addGeoJSON(I10,color="cyan",weight=3,opacity=1,fill=FALSE,group="I-10 (CA-TX)",options = pathOptions(clickable=FALSE)) %>%
       addGeoJSON(ALLNHS_1,color="#FEF9E7",weight=1,opacity=0.3,fill=FALSE,group="Annual Average Daily Traffic for Trucks",options = pathOptions(clickable=FALSE)) %>%
       addGeoJSON(ALLNHS_2,color="#FCF3CF",weight=2,opacity=0.5,fill=FALSE,group="Annual Average Daily Traffic for Trucks",options = pathOptions(clickable=FALSE)) %>%
@@ -304,32 +341,12 @@ server <- function(input, output, session){
       hideGroup("I-10 (CA-TX)") %>%
       
       # adding a layer control to swith between different reference maps
-      addLayersControl(baseGroups = c("OpenStreetMap","Black & White","Labels Only","Awesome Dark"),
+      addLayersControl(baseGroups = c("OpenStreetMap","Black & White","Awesome Dark","Satellite View"),
                        overlayGroups = c("I-10 (CA-TX)","Annual Average Daily Traffic for Trucks"),
                        options = layersControlOptions(collapsed = TRUE,autoZIndex=TRUE)) %>%
       # adding a scalebar
       addScaleBar(position="bottomright",options=scaleBarOptions(maxWidth=100,metric=FALSE,imperial=TRUE,updateWhenIdle=TRUE)) %>%
       setView(-112.058487, 33.462173, 6) # addProviderTiles("Stamen.TonerLite")
-  })
-  
-  # function of adding points on a reference map
-  add <- reactiveValues()
-  
-  observeEvent(add$lat, {
-    leafletProxy("map") %>% addMarkers(lat = add$lat, lng = add$lng,layerId=paste("New CNG station with Lat: ",add$lat," and Lon: ",add$lng,sep="")) # layerId has to be a vector and each marker has a unique layerId
-  })
-  
-  observeEvent(input$map_click, {
-    coords <- input$map_click
-    if ( (!is.null(input$add) && (!is.null(coords))) ) {
-      if (input$add >= 1) {
-        add[["lat"]] <- coords$lat
-        add[["lng"]] <- coords$lng        
-      }
-      else {
-        print("Please click 'Add' button to draw points!")
-      }
-    }
   })
   
   # displaying additional data layers
@@ -705,6 +722,7 @@ server <- function(input, output, session){
   # clicking calculate button
   observeEvent(input$distCal, {
     if(input$from!="" & input$to!="") {
+      if((as.factor(unlist(input$from)) %in% locations$ID_2) & (as.factor(unlist(input$to)) %in% locations$ID_2)) {
       from_point <- as.data.frame(as.factor(unlist(input$from)))
       to_point <- as.data.frame(as.factor(unlist(input$to)))
       colnames(from_point) <- c("ID_2")
@@ -738,14 +756,14 @@ server <- function(input, output, session){
         
         leafletProxy("map",data=from_point2$df) %>% 
           addCircleMarkers(lng=~Longitude,lat=~Latitude,color="cyan",radius=5,group="Selected Points",
-                           label=~paste("ID: ",ID_2,"; ",Groups_Wit,"; ",NG_Vehicle),labelOptions=labelOptions(noHide = T,direction="top",offset=c(0,-45), style=list(
+                           label=~paste("ID: ",ID_2,"; ",Groups_Wit,"; ",NG_Vehicle),labelOptions=labelOptions(noHide = T,direction="top",offset=c(0,-15), style=list(
                              'border' = '1px solid #666266','padding'='0px 0px 0px 5px','text-aligh'='center'
                            )),options=pathOptions(clickable=F))
       } else {
         from_point2$df <- merge(from_point,Truck_Stops,all.x=TRUE)
         leafletProxy("map",data=from_point2$df) %>% 
           addCircleMarkers(lng=~LONGITUDE,lat=~LATITUDE,color="cyan",radius=5,fill=TRUE,fillColor="cyan",fillOpacity=10,group="Selected Points",
-                           label=~paste0("ID: ",ID_2),labelOptions=labelOptions(noHide = T,direction="top",offset=c(0,-45), style=list(
+                           label=~paste0("ID: ",ID_2),labelOptions=labelOptions(noHide = T,direction="top",offset=c(0,-15), style=list(
                              'border' = '1px solid #666266','padding'='0px 0px 0px 5px','text-aligh'='center'
                            )),options=pathOptions(clickable=F))
       }
@@ -754,18 +772,20 @@ server <- function(input, output, session){
         to_point2$df <- merge(to_point,CNG_Stations,"ID_2",all.x=TRUE)
         leafletProxy("map",data=to_point2$df) %>% 
           addCircleMarkers(lng=~Longitude,lat=~Latitude,color="cyan",radius=5,group="Selected Points",
-                           label=~paste0("ID: ",ID_2,"; ",Groups_Wit,"; ",NG_Vehicle),labelOptions=labelOptions(noHide = T,direction="top",offset=c(0,-45), style=list(
+                           label=~paste0("ID: ",ID_2,"; ",Groups_Wit,"; ",NG_Vehicle),labelOptions=labelOptions(noHide = T,direction="top",offset=c(0,-15), style=list(
                              'border' = '1px solid #666266','padding'='0px 0px 0px 5px','text-aligh'='center'
                            )),options=pathOptions(clickable=F))
       } else {
         to_point2$df <- merge(to_point,Truck_Stops,"ID_2",all.x=TRUE)
         leafletProxy("map",data=to_point2$df) %>% 
           addCircleMarkers(lng=~LONGITUDE,lat=~LATITUDE,color="cyan",radius=5,fill=TRUE,fillColor="cyan",fillOpacity=10,group="Selected Points",
-                           label=~paste0("ID: ",ID_2),labelOptions=labelOptions(noHide = T,direction="top",offset=c(0,-45), style=list(
+                           label=~paste0("ID: ",ID_2),labelOptions=labelOptions(noHide = T,direction="top",offset=c(0,-15), style=list(
                              'border' = '1px solid #666266','padding'='0px 0px 0px 5px','text-aligh'='center'
                            )),options=pathOptions(clickable=F))
       }
-      
+      } else {
+        alert("Origin and/or destination is(are) not in the list of stations that are located in the Southwest (10 states). Please try another pair.")
+      }
     } else {
       alert("Please enter IDs of start location and destination!")
     }
@@ -781,11 +801,71 @@ server <- function(input, output, session){
     }
   })
   
+  # distance range tool
+  distancerange2 <- reactiveValues()
+  distancerange2$df <- data.frame()
+  
+  observeEvent(input$distCal2, {
+    if(input$origin!="") {
+      origin_point <- as.data.frame(as.factor(unlist(input$origin)))
+      colnames(origin_point) <- c("ID_2")
+      
+      # Deal with the out of bounds problem here to make sure that a message will be shown instead of error (application crash) if an input ID is not in the list of stations.
+      if(as.character(origin_point$ID_2) %in% table_index$ID) {
+        distancerange <- as.data.frame(result[1:2037,as.character(origin_point$ID_2)])
+        colnames(distancerange) <- c("Distance")
+        distancerange <- distancerange %>% mutate(ID = rownames(distancerange))
+        distancerange <- distancerange %>% filter(Distance >= input$distance_range[1] & Distance <= input$distance_range[2])
+        distancerange2$df <- locations %>% filter(ID_2 %in% as.factor(distancerange$ID))
+        num_cng <- nrow(distancerange2$df %>% filter(as.numeric(as.character(ID_2))<361))
+        num_truck <- nrow(distancerange2$df %>% filter(as.numeric(as.character(ID_2))>360))
+        origin_point2 <- locations %>% filter(ID_2 %in% origin_point$ID_2)
+        
+        if(nrow(distancerange2$df)>0) {
+          output$distancerange_result <- renderText({
+            paste0(num_cng," existing CNG station(s) and ",num_truck," truck stop(s) within the network distance range.")
+          })
+          leafletProxy("map") %>% 
+            clearGroup(group="range_stations") %>%
+            addCircleMarkers(data=origin_point2,lng=~LONGITUDE,lat=~LATITUDE,color="cyan",radius=4,fill=TRUE,fillColor="cyan",fillOpacity=10,group="range_stations",layerId=~ID_2,
+                             label="Origin",labelOptions=labelOptions(noHide = T,direction="top",offset=c(0,-10), style=list(
+                               'border' = '1px solid #666266','padding'='0px 0px 0px 5px','text-aligh'='center'
+                             )),options=pathOptions(clickable=F)) %>%
+            addCircleMarkers(data=distancerange2$df,lng=~LONGITUDE,lat=~LATITUDE,color="#6C0A6E",radius=4,fill=FALSE,fillOpacity=10,group="range_stations",layerId=~ID_2)
+        } else {
+          alert("No CNG stations and truck stops within the distance range.")
+        }
+      } else {
+        alert("Selected origin is not in the list of stations that are located within a 600-mile buffer along I10 from CA to TX. Please try another origin.")
+      }
+    } else {
+      alert("Please enter origin ID!")
+    }
+  })
+  
+  # clicking remove labels button
+  observeEvent(input$removeLabels2, {
+    if(!is.null(distancerange2$df$ID_2)) {
+      leafletProxy("map") %>%
+        clearGroup(group="range_stations")
+    } else {
+      alert("No stations are selected within the distance range.")
+    }
+  })
+  
   # clicking evaluate button
   df <- observeEvent(input$eval, {
     if(nrow(selections2())>0) {
       if((input$group!="") & !is.na(input$stage) & !is.na(input$iteration)) {
-        if(!(selections2()$GROUP_STAGE %in% downloadAllGroupMeasures()$GROUP_STAGE)) {
+        db_measures_allgroups <- mongo(collection = "allgroups_measures",
+                                       url = sprintf(
+                                         "mongodb://%s:%s@%s/%s",
+                                         options()$mongodb$username,
+                                         options()$mongodb$password,
+                                         options()$mongodb$host,
+                                         databaseName))
+        data <- db_measures_allgroups$find()
+        if(!(selections2()$GROUP_STAGE %in% data$GROUP_STAGE)) {
           # Connect to the database
           db_selections <- mongo(collection = group_selections(),
                                  url = sprintf(
@@ -801,13 +881,6 @@ server <- function(input, output, session){
                                  options()$mongodb$password,
                                  options()$mongodb$host,
                                  databaseName))
-          db_measures_allgroups <- mongo(collection = "allgroups_measures",
-                                         url = sprintf(
-                                           "mongodb://%s:%s@%s/%s",
-                                           options()$mongodb$username,
-                                           options()$mongodb$password,
-                                           options()$mongodb$host,
-                                           databaseName))
           db_measures_allgroups_plot <- mongo(collection = "allgroups_measures_plot",
                                               url = sprintf(
                                                 "mongodb://%s:%s@%s/%s",
@@ -998,7 +1071,7 @@ The combination of group name and stage is the same as a previous one. Selection
             for(gap in 1:nrow(data_temp)) {
               leafletProxy("map") %>% 
                 addPolylines(data=data_temp,lng=as.numeric(data_temp[gap,c(2,4)]),lat=as.numeric(data_temp[gap,c(1,3)]),group="Uncovered segments_top quartile",
-                             color="cyan",weight=2,opacity=1,fill=FALSE,options = pathOptions(clickable=FALSE))
+                             color="#7D6608",weight=8,opacity=1,fill=FALSE,options = pathOptions(clickable=FALSE))
             }
             # visualize uncovered points
             locations_uncovered_ori <- data_temp %>% select(lat_ori,lon_ori)
@@ -1045,7 +1118,7 @@ The combination of group name and stage is the same as a previous one. Selection
             for(gap in 1:nrow(data_temp)) {
               leafletProxy("map") %>% 
                 addPolylines(data=data_temp,lng=as.numeric(data_temp[gap,c(2,4)]),lat=as.numeric(data_temp[gap,c(1,3)]),group="Uncovered segments_2nd quartile",
-                             color="cyan",weight=2,opacity=1,fill=FALSE,options = pathOptions(clickable=FALSE))
+                             color="#9A7D0A",weight=6,opacity=1,fill=FALSE,options = pathOptions(clickable=FALSE))
             }
             # visualize uncovered points
             locations_uncovered_ori <- data_temp %>% select(lat_ori,lon_ori)
@@ -1093,7 +1166,7 @@ The combination of group name and stage is the same as a previous one. Selection
             for(gap in 1:nrow(data_temp)) {
               leafletProxy("map") %>% 
                 addPolylines(data=data_temp,lng=as.numeric(data_temp[gap,c(2,4)]),lat=as.numeric(data_temp[gap,c(1,3)]),group="Uncovered segments_3rd quartile",
-                             color="cyan",weight=2,opacity=1,fill=FALSE,options = pathOptions(clickable=FALSE))
+                             color="#B7950B",weight=4,opacity=1,fill=FALSE,options = pathOptions(clickable=FALSE))
             }
             # visualize uncovered points
             locations_uncovered_ori <- data_temp %>% select(lat_ori,lon_ori)
@@ -1139,7 +1212,7 @@ The combination of group name and stage is the same as a previous one. Selection
             for(gap in 1:nrow(data_temp)) {
               leafletProxy("map") %>% 
                 addPolylines(data=data_temp,lng=as.numeric(data_temp[gap,c(2,4)]),lat=as.numeric(data_temp[gap,c(1,3)]),group="Uncovered segments_4th quartile",
-                             color="cyan",weight=2,opacity=1,fill=FALSE,options = pathOptions(clickable=FALSE))
+                             color="#D4AC0D",weight=2,opacity=1,fill=FALSE,options = pathOptions(clickable=FALSE))
             }
             # visualize uncovered points
             locations_uncovered_ori <- data_temp %>% select(lat_ori,lon_ori)
@@ -1169,12 +1242,23 @@ The combination of group name and stage is the same as a previous one. Selection
   })
   
   observe({
-    od_pair <- OD_paths %>% filter(PAIR == input$od_pairs)
-    leafletProxy("map") %>% 
-      clearGroup("OD Path") 
-    
-    leafletProxy("map") %>% 
-      addPolylines(data=od_pair,color="cyan",weight=2,opacity=1,fill=FALSE,group="OD Path",options = pathOptions(clickable=FALSE))
+    od_pair <- OD_paths2 %>% filter(PAIR == input$od_pairs)
+    wt<-od_pair$WIDTH*2
+    ktons<-round(od_pair$TOTAL_KTONS_2015.y,digits=0)
+    tmiles<-round(od_pair$TOTAL_TON_MILE_2015.y,digits=0)
+    if(nrow(od_pair) > 0) {
+      leafletProxy("map") %>% 
+        clearGroup("OD Path") %>%
+        removeControl(layerId="OD_Legend")
+      
+      leafletProxy("map") %>% 
+        addPolylines(data=od_pair,color="cyan",weight=wt,opacity=1,fill=FALSE,group="OD Path",options = pathOptions(clickable=FALSE)) %>%
+        addLegend("bottomleft",colors="cyan",labels=paste0("KTons: ",ktons,"; ","Ton-Miles: ",tmiles),opacity=3,title=od_pair$PAIR,layerId="OD_Legend")
+    } else {
+      leafletProxy("map") %>% 
+        clearGroup("OD Path") %>%
+        removeControl(layerId="OD_Legend")
+    }
   })
   
   downloadTempGroupSelections <- reactive({
@@ -1386,28 +1470,25 @@ The combination of group name and stage is the same as a previous one. Selection
   #### Comparing to Other Groups Tab ####
   output$allmeasuresTable <- DT::renderDataTable({
     input$eval
-    data <- downloadAllGroupMeasures()
+    input$update_tableplot
     
-    ## Scenario: GROUP_STAGE does not include word 'Stage'
-    # find the position of the last _ 
-    underscore <- regexpr("\\_[^\\_]*$",data$GROUP_STAGE) # return the specific position, integer: the position of the last underscore
-    GROUP <- substr(data$GROUP_STAGE, 1, underscore-1) # extract substrings in a character vector: first character to the stopping character
-    STAGE <- substr(data$GROUP_STAGE, underscore+7, nchar(as.character(data$GROUP_STAGE))) # extract substrings in a character vector: stopping character to the last one
-    data <- as.data.frame(cbind(data,GROUP,STAGE))
-    data$GROUP <- as.character(data$GROUP)
-    data$STAGE <- as.character(data$STAGE)
-    data <- data %>% mutate(ITERATION=paste0(GROUP,"_",STAGE))
-    data2 <- data %>% filter(ITERATION %in% get_selected(input$groupstage_plot,format="names"))
+    data <- downloadAllGroupMeasures()
+    data2 <- data %>% filter(GROUP_STAGE2 %in% input$selection_tableplot)
+    
     # If no data are in view, return all
-    if (nrow(data2) == 0)
-      return(downloadAllGroupMeasures())
-    data2
+    if (nrow(data2) == 0) {
+      #return(downloadAllGroupMeasures())
+      data <- data %>% select(1:9)
+      return(data)
+    } else {
+      data2 <- data2 %>% select(1:9)
+      return(data2)
+    }
   })
   
   downloadAllGroupMeasures <- reactive({
     input$eval
-    input$update_table
-    input$update_plot
+    input$update_tableplot
     input$update_spatial
     db_measures_allgroups <- mongo(collection = "allgroups_measures",
                                    url = sprintf(
@@ -1417,13 +1498,33 @@ The combination of group name and stage is the same as a previous one. Selection
                                      options()$mongodb$host,
                                      databaseName))
     data <- db_measures_allgroups$find()
+    
+    ## Scenario: GROUP_STAGE does not include word 'Stage'
+    # find the position of the last _ 
+    underscore <- regexpr("\\_[^\\_]*$",data$GROUP_STAGE) # return the specific position, integer: the position of the last underscore
+    GROUP <- substr(data$GROUP_STAGE, 1, underscore-1) # extract substrings in a character vector: first character to the stopping character
+    STAGEITERATION <- substr(data$GROUP_STAGE, underscore+7, nchar(as.character(data$GROUP_STAGE))) # extract substrings in a character vector: stopping character to the last one
+    data <- as.data.frame(cbind(data,GROUP,STAGEITERATION))
+    
+    stage_iteration <- colsplit(data$STAGEITERATION,"\\.",c("STAGE","ITERATION")) # need to escape period . so use \\.
+    data <- as.data.frame(cbind(data,stage_iteration))
+    
+    data$GROUP <- as.character(data$GROUP)
+    data$STAGEITERATION <- as.character(data$STAGEITERATION)
+    data$STAGE <- as.numeric(as.character(data$STAGE))
+    data$ITERATION <- as.numeric(as.character(data$ITERATION))
+    
+    data <- data %>% mutate(GROUP_STAGE2=paste0(GROUP,"_",STAGEITERATION)) # e.g. TRB test_1.1
+    data <- data %>% arrange(GROUP,STAGE,ITERATION)
+    group <- as.data.frame(data %>% group_by(GROUP) %>% summarise(COUNT=n()))
+    
     data
   })
   
   downloadAllGroupMeasures_plot <- reactive({
     input$eval
-    input$update_table
-    input$update_plot
+    input$update_tableplot
+    input$update_spatial
     db_measures_allgroups_plot <- mongo(collection = "allgroups_measures_plot",
                                         url = sprintf(
                                           "mongodb://%s:%s@%s/%s",
@@ -1432,85 +1533,73 @@ The combination of group name and stage is the same as a previous one. Selection
                                           options()$mongodb$host,
                                           databaseName))
     data <- db_measures_allgroups_plot$find()
+    
+    ## Scenario: GROUP_STAGE does not include word 'Stage'
+    # find the position of the last _ 
+    underscore <- regexpr("\\_[^\\_]*$",data$GROUP_STAGE) # return the specific position, integer: the position of the last underscore
+    GROUP <- substr(data$GROUP_STAGE, 1, underscore-1) # extract substrings in a character vector: first character to the stopping character
+    STAGEITERATION <- substr(data$GROUP_STAGE, underscore+7, nchar(as.character(data$GROUP_STAGE))) # extract substrings in a character vector: stopping character to the last one
+    data <- as.data.frame(cbind(data,GROUP,STAGEITERATION))
+    
+    stage_iteration <- colsplit(data$STAGEITERATION,"\\.",c("STAGE","ITERATION"))
+    data <- as.data.frame(cbind(data,stage_iteration))
+    
+    data$GROUP <- as.character(data$GROUP)
+    data$STAGEITERATION <- as.character(data$STAGEITERATION)
+    data$STAGE <- as.numeric(as.character(data$STAGE))
+    data$ITERATION <- as.numeric(as.character(data$ITERATION))
+    
+    data <- data %>% mutate(GROUP_STAGE2=paste0(GROUP,"_",STAGEITERATION)) # e.g. TRB test_1.1
+    data <- data %>% arrange(GROUP,STAGE,ITERATION)
+    group <- as.data.frame(data %>% group_by(GROUP) %>% summarise(COUNT=n()))
+    
     data
   })
   
+  output$group_tableplot <- renderUI({
+    checkboxGroupInput(inputId = "group_table_plot",label = "Please select group(s):",
+                       choices = unique(sort(downloadAllGroupMeasures()$GROUP)), selected = FALSE)
+  })
+  
+  # update the list of groups and stages to include recent inputs from other groups
+  observeEvent(input$update_tableplot, {
+    updateCheckboxGroupInput(session = session,inputId = "group_table_plot",label = "Please select group(s):",
+                             choices = unique(sort(downloadAllGroupMeasures()$GROUP)), selected = FALSE)
+  })
+  
+  # create a list of previous groups/stages
+  output$stageiteration_tableplot <- renderUI({
+    data <- downloadAllGroupMeasures() %>% filter(GROUP %in% input$group_table_plot)
+    selectizeInput(inputId = "selection_tableplot",label = "Please select stage(s) and iteration(s):", # used to have inputId with two underscores previous_groups_list but didn't work, and then removed underscores and ran no problem
+                   choices = data$GROUP_STAGE2, multiple = TRUE, options = list(placeholder = "")) #, options = list(maxOptions = 5)
+  })
+    
   output$downloadAllGroupMeasureData <- downloadHandler(
     filename = function() {
       paste("Group_Measures.csv",sep="")
     },
     content = function(file) {
       data <- downloadAllGroupMeasures()
-      ## Scenario: GROUP_STAGE does not include word 'Stage'
-      # find the position of the last _ 
-      underscore <- regexpr("\\_[^\\_]*$",data$GROUP_STAGE) # return the specific position, integer: the position of the last underscore
-      GROUP <- substr(data$GROUP_STAGE, 1, underscore-1) # extract substrings in a character vector: first character to the stopping character
-      STAGE <- substr(data$GROUP_STAGE, underscore+7, nchar(as.character(data$GROUP_STAGE))) # extract substrings in a character vector: stopping character to the last one
-      data <- as.data.frame(cbind(data,GROUP,STAGE))
-      data$GROUP <- as.character(data$GROUP)
-      data$STAGE <- as.character(data$STAGE)
-      data <- data %>% mutate(ITERATION=paste0(GROUP,"_",STAGE))
-      data2 <- data %>% filter(ITERATION %in% get_selected(input$groupstage_plot,format="names"))
+      data2 <- data %>% filter(GROUP_STAGE2 %in% input$selection_tableplot)
+      
       if (nrow(data2) == 0) {
+        data <- data %>% select(1:9)
         write.csv(data,file)
       } else {
+        data2 <- data2 %>% select(1:9)
         write.csv(data2,file)
       }
     }
   )
   
-  # create a checkbox group input list based on the data read from database
-  output$groupstage_plot <- renderTree({
-    data <- downloadAllGroupMeasures()
-    
-    ## Scenario: GROUP_STAGE does not include word 'Stage'
-    # find the position of the last _ 
-    underscore <- regexpr("\\_[^\\_]*$",data$GROUP_STAGE) # return the specific position, integer: the position of the last underscore
-    GROUP <- substr(data$GROUP_STAGE, 1, underscore-1) # extract substrings in a character vector: first character to the stopping character
-    STAGE <- substr(data$GROUP_STAGE, underscore+7, nchar(as.character(data$GROUP_STAGE))) # extract substrings in a character vector: stopping character to the last one
-    data <- as.data.frame(cbind(data,GROUP,STAGE))
-    data$GROUP <- as.character(data$GROUP)
-    data$STAGE <- as.character(data$STAGE)
-    data <- data %>% mutate(ITERATION=paste0(data$GROUP,"_",data$STAGE))
-    data <- data %>% arrange(GROUP)
-    group <- as.data.frame(data %>% group_by(GROUP) %>% summarise(COUNT=n()))
-    
-    # If no data are in view, don't plot
-    if (nrow(data) == 0) {
-      return(list())
-    } else {
-      # create a nested list with two levels
-      list <- list()
-      n <- 1
-      for(i in 1:nrow(group)){ 
-        nested_list <- list()
-        for(j in 1:group[i,2]) {
-          nested_list[[data[n,12]]] <- data[n,12]
-          n <- n+1
-        }
-        name <- group[i,1]
-        list[[name]] <- nested_list
-      }
-      # Here, a list will be created everytime when to update the database table
-      list
-    }
-  })
-  
   # create bar charts and scatter plots by selecting different x and y variables
   output$groupcomparison_plot <- renderPlot({
+    input$eval
+    input$update_tableplot
     data <- downloadAllGroupMeasures_plot()
-    ## Scenario: GROUP_STAGE does not include word 'Stage'
-    # find the position of the last _ 
-    underscore <- regexpr("\\_[^\\_]*$",data$GROUP_STAGE) # return the specific position, integer: the position of the last underscore
-    GROUP <- substr(data$GROUP_STAGE, 1, underscore-1) # extract substrings in a character vector: first character to the stopping character
-    STAGE <- substr(data$GROUP_STAGE, underscore+7, nchar(as.character(data$GROUP_STAGE))) # extract substrings in a character vector: stopping character to the last one
-    data <- as.data.frame(cbind(data,GROUP,STAGE))
-    data$GROUP <- as.character(data$GROUP)
-    data$STAGE <- as.character(data$STAGE)
-    data <- data %>% mutate(ITERATION=paste0(GROUP,"_",STAGE))
-    data2 <- data %>% filter(ITERATION %in% get_selected(input$groupstage_plot,format="names"))
+    data2 <- data %>% filter(GROUP_STAGE2 %in% input$selection_tableplot)
     
-    data2$GROUP_STAGE <- as.factor(data2$GROUP_STAGE)
+    data2$GROUP_STAGE2 <- as.factor(data2$GROUP_STAGE2)
     
     # If no data are in view, don't plot
     if (nrow(data2) == 0)
@@ -1559,18 +1648,9 @@ The combination of group name and stage is the same as a previous one. Selection
   # plot function that is used for "download" process
   plotInput <- function() {
     data <- downloadAllGroupMeasures_plot()
-    ## Scenario: GROUP_STAGE does not include word 'Stage'
-    # find the position of the last _ 
-    underscore <- regexpr("\\_[^\\_]*$",data$GROUP_STAGE) # return the specific position, integer: the position of the last underscore
-    GROUP <- substr(data$GROUP_STAGE, 1, underscore-1) # extract substrings in a character vector: first character to the stopping character
-    STAGE <- substr(data$GROUP_STAGE, underscore+7, nchar(as.character(data$GROUP_STAGE))) # extract substrings in a character vector: stopping character to the last one
-    data <- as.data.frame(cbind(data,GROUP,STAGE))
-    data$GROUP <- as.character(data$GROUP)
-    data$STAGE <- as.character(data$STAGE)
-    data <- data %>% mutate(ITERATION=paste0(GROUP,"_",STAGE))
+    data2 <- data %>% filter(GROUP_STAGE2 %in% input$selection_tableplot)
     
-    data2 <- data %>% filter(ITERATION %in% get_selected(input$groupstage_plot,format="names"))
-    data2$GROUP_STAGE <- as.factor(data2$GROUP_STAGE)
+    data2$GROUP_STAGE2 <- as.factor(data2$GROUP_STAGE2)
     # If no data are in view, don't plot
     if (nrow(data2) == 0)
       return(NULL)
@@ -1630,6 +1710,7 @@ The combination of group name and stage is the same as a previous one. Selection
   downloadAllGroupSelections <- reactive({
     # Update the responses whenever a new button action (e.g. eval, update, etc.) is made
     input$eval
+    input$update_tableplot
     input$update_spatial
     db_selections_allgroups <- mongo(collection = "allgroups_selections",
                                      url = sprintf(
@@ -1639,6 +1720,26 @@ The combination of group name and stage is the same as a previous one. Selection
                                        options()$mongodb$host,
                                        databaseName))
     data <- db_selections_allgroups$find()
+    
+    ## Scenario: GROUP_STAGE does not include word 'Stage'
+    # find the position of the last _ 
+    underscore <- regexpr("\\_[^\\_]*$",data$GROUP_STAGE) # return the specific position, integer: the position of the last underscore
+    # HERE, it has to be GROUP2 because there is already a column named GROUP which indicates truck
+    GROUP2 <- substr(data$GROUP_STAGE, 1, underscore-1) # extract substrings in a character vector: first character to the stopping character
+    STAGEITERATION <- substr(data$GROUP_STAGE, underscore+7, nchar(as.character(data$GROUP_STAGE))) # extract substrings in a character vector: stopping character to the last one
+    data <- as.data.frame(cbind(data,GROUP2,STAGEITERATION))
+    
+    stage_iteration <- colsplit(data$STAGEITERATION,"\\.",c("STAGE","ITERATION")) # need to escape period . so use \\.
+    data <- as.data.frame(cbind(data,stage_iteration))
+    
+    data$GROUP2 <- as.character(data$GROUP2)
+    data$STAGEITERATION <- as.character(data$STAGEITERATION)
+    data$STAGE <- as.numeric(as.character(data$STAGE))
+    data$ITERATION <- as.numeric(as.character(data$ITERATION))
+    
+    data <- data %>% mutate(GROUP_STAGE2=paste0(GROUP2,"_",STAGEITERATION)) # e.g. TRB test_1.1
+    data <- data %>% arrange(GROUP2,STAGE,ITERATION)
+    
     data
   })
   
@@ -1648,14 +1749,13 @@ The combination of group name and stage is the same as a previous one. Selection
       # Add base maps
       addTiles(group = "OpenStreetMap") %>%
       addProviderTiles("CartoDB.Positron", group = "Black & White") %>%
-      addTiles(urlTemplate = 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
-               attribution = paste('&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors','&copy; <a href="http://cartodb.com/attributions">CartoDB</a>'),group="Labels Only") %>%
       addProviderTiles("CartoDB.DarkMatter", group = "Awesome Dark") %>%
+      addProviderTiles("Esri.WorldImagery", group = "Satellite View") %>%
       # adding a layer control to swith between different reference maps
       addGeoJSON(I10,color="cyan",weight=3,opacity=1,fill=FALSE,group="I-10 (CA-TX)",pathOptions(clickable=FALSE)) %>%
       hideGroup("I-10 (CA-TX)") %>%
       # adding a layer control to swith between different reference maps
-      addLayersControl(baseGroups = c("OpenStreetMap","Black & White","Labels Only","Awesome Dark"),
+      addLayersControl(baseGroups = c("OpenStreetMap","Black & White","Awesome Dark","Satellite View"),
                        overlayGroups = c("I-10 (CA-TX)"),
                        options = layersControlOptions(collapsed = TRUE,autoZIndex=TRUE)) %>%
       # adding a scalebar
@@ -1862,58 +1962,30 @@ The combination of group name and stage is the same as a previous one. Selection
   })
   
   # create a checkbox group input list based on the data read from database
-  output$groupstage_spatial <- renderTree({
-    data <- downloadAllGroupMeasures()
-    
-    ## Scenario: GROUP_STAGE does not include word 'Stage'
-    # find the position of the last _ 
-    underscore <- regexpr("\\_[^\\_]*$",data$GROUP_STAGE) # return the specific position, integer: the position of the last underscore
-    GROUP <- substr(data$GROUP_STAGE, 1, underscore-1) # extract substrings in a character vector: first character to the stopping character
-    STAGE <- substr(data$GROUP_STAGE, underscore+7, nchar(as.character(data$GROUP_STAGE))) # extract substrings in a character vector: stopping character to the last one
-    data <- as.data.frame(cbind(data,GROUP,STAGE))
-    data$GROUP <- as.character(data$GROUP)
-    data$STAGE <- as.character(data$STAGE)
-    data <- data %>% mutate(ITERATION=paste0(GROUP,"_",STAGE))
-    data <- data %>% arrange(GROUP)
-    group <- as.data.frame(data %>% group_by(GROUP) %>% summarise(COUNT=n()))
-    
-    # If no data are in view, don't plot
-    if (nrow(data) == 0) {
-      return(list())
-    } else {
-      # create a nested list with two levels
-      list <- list()
-      n <- 1
-      for(i in 1:nrow(group)){ 
-        nested_list <- list()
-        for(j in 1:group[i,2]) {
-          nested_list[[data[n,12]]] <- data[n,12]
-          n <- n+1
-        }
-        name <- group[i,1]
-        list[[name]] <- nested_list
-      }
-      # Here, a list will be created everytime when to update the database table
-      list
-    }
+  output$group_spatial <- renderUI({
+    checkboxGroupInput(inputId = "group_spatial_map",label = "Please select group(s):",
+                       choices = unique(sort(downloadAllGroupMeasures()$GROUP)), selected = FALSE)
+  })
+  
+  # update the list of groups and stages to include recent inputs from other groups
+  observeEvent(input$update_spatial, {
+    updateCheckboxGroupInput(session = session,inputId = "group_spatial_map",label = "Please select group(s):",
+                             choices = unique(sort(downloadAllGroupMeasures()$GROUP)), selected = FALSE)
+  })
+  
+  # create a list of previous groups/stages
+  output$stageiteration_spatial <- renderUI({
+    data <- downloadAllGroupMeasures() %>% filter(GROUP %in% input$group_spatial_map)
+    selectizeInput(inputId = "selection_spatial",label = "Please select stage(s) and iteration(s):", # used to have inputId with two underscores previous_groups_list but didn't work, and then removed underscores and ran no problem
+                   choices = data$GROUP_STAGE2, multiple = TRUE, options = list(placeholder = "")) #, options = list(maxOptions = 5)
   })
   
   # clicking visualize button
   observeEvent(input$vis_spatial, {
     data <- downloadAllGroupSelections()
-    ## Scenario: GROUP_STAGE does not include word 'Stage'
-    # find the position of the last _ 
-    underscore <- regexpr("\\_[^\\_]*$",data$GROUP_STAGE) # return the specific position, integer: the position of the last underscore
-    # already have GROUP column in the dataset so use DESIGN_GROUP
-    DESIGN_GROUP <- substr(data$GROUP_STAGE, 1, underscore-1) # extract substrings in a character vector: first character to the stopping character
-    STAGE <- substr(data$GROUP_STAGE, underscore+7, nchar(as.character(data$GROUP_STAGE))) # extract substrings in a character vector: stopping character to the last one
-    data <- as.data.frame(cbind(data,DESIGN_GROUP,STAGE))
-    data$DESIGN_GROUP <- as.character(data$DESIGN_GROUP)
-    data$STAGE <- as.character(data$STAGE)
-    data <- data %>% mutate(ITERATION=paste0(DESIGN_GROUP,"_",STAGE))
-    data2 <- data %>% filter(ITERATION %in% get_selected(input$groupstage_spatial,format="names"))
-    data3 <- data2 %>% select(GROUP_STAGE,ID,NAME,LONGITUDE,LATITUDE) %>% group_by(ID,NAME) %>% 
-      summarise(COUNT=n(),meanLONGITUDE=mean(LONGITUDE),meanLATITUDE=mean(LATITUDE),G_S=paste(GROUP_STAGE,collapse=",")) 
+    data2 <- data %>% filter(GROUP_STAGE2 %in% input$selection_spatial)
+    data3 <- data2 %>% select(GROUP_STAGE2,ID,NAME,LONGITUDE,LATITUDE) %>% group_by(ID,NAME) %>% 
+      summarise(COUNT=n(),meanLONGITUDE=mean(LONGITUDE),meanLATITUDE=mean(LATITUDE),G_S=paste(GROUP_STAGE2,collapse=",")) 
     data3 <- data3 %>% filter(COUNT>1)
     colorpal_comparison <- colorFactor(rainbow(NROW(unique(data2$GROUP_STAGE))),data2$GROUP_STAGE)
     if(nrow(data3) > 0) {
@@ -1949,20 +2021,19 @@ The combination of group name and stage is the same as a previous one. Selection
     },
     content = function(file) {
       data <- downloadAllGroupSelections()
-      ## Scenario: GROUP_STAGE does not include word 'Stage'
-      # find the position of the last _ 
-      underscore <- regexpr("\\_[^\\_]*$",data$GROUP_STAGE) # return the specific position, integer: the position of the last underscore
-      # already have GROUP column in the dataset so use DESIGN_GROUP
-      DESIGN_GROUP <- substr(data$GROUP_STAGE, 1, underscore-1) # extract substrings in a character vector: first character to the stopping character
-      STAGE <- substr(data$GROUP_STAGE, underscore+7, nchar(as.character(data$GROUP_STAGE))) # extract substrings in a character vector: stopping character to the last one
-      data <- as.data.frame(cbind(data,DESIGN_GROUP,STAGE))
-      data$DESIGN_GROUP <- as.character(data$DESIGN_GROUP)
-      data$STAGE <- as.character(data$STAGE)
-      data <- data %>% mutate(ITERATION=paste0(DESIGN_GROUP,"_",STAGE))
-      data2 <- data %>% filter(ITERATION %in% get_selected(input$groupstage_spatial,format="names"))
+      data2 <- data %>% filter(GROUP_STAGE2 %in% input$selection_spatial)
       write.csv(data2,file)
     }
   )
+    
+  output$about <- renderUI({
+    return(tags$iframe(style="height:900px; width:100%; scrolling=yes",src="About.pdf"))
+  })
+  
+  output$help <- renderUI({
+    return(tags$iframe(style="height:900px; width:100%; scrolling=yes",src="Help.pdf"))
+  })
+    
   }
 
 shinyApp(ui, server)
