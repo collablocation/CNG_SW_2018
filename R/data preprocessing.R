@@ -30,6 +30,16 @@ library(rmapshaper) # for manipulating the geometry (polygon, line, marker) part
 library(devtools)
 devtools::install_github("rstudio/leaflet")
 
+# convert distance dataframe to matrix
+result2 <- read.csv("C:/Users/Fangwu Wei/Dropbox/ABOR RIF Alt Fuels/Data/shortest_path_distance_complete_name.csv",header=TRUE)
+result2 <- result2[ ,2:2038]
+colnames(result2) <- points_loc$ID_2
+rownames(result2) <- points_loc$ID_2
+result <- as.matrix(result2)
+# Deal with the out of bounds problem here to make sure that a message will be shown instead of error (application crash) if an input ID is not in the list of stations.
+table_index <- as.data.frame(result[1:2037,'1'])
+table_index <- table_index %>% mutate(ID = rownames(table_index))
+
 ## Importing data for existing CNG stations, truck stops and AADT 
 CNG_Stations <- read.dbf("C:/Users/.../CNG_update.dbf") 
 # focusing on public stations for heavy duty trucks
